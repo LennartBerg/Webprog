@@ -15,7 +15,7 @@
 <body>
     <header>
         <h1 class="title">Gymder</h1>
-        <h5>Klick, Match, Workout!</h5>
+        <h2 class="slogan">Klick, Match, Workout!</h2>
         <div class=""></div>
     </header>
     <nav class="navigation">
@@ -28,7 +28,6 @@
             <li> <a href="../Profil.php">Profil</a> </li>
             <li> <span>Inhalte</span>
                 <ul>
-                    <li> <a href="../Bestenliste.php">Bestenliste</a> </li>
                     <li> <a href="../Rezepte.php">Rezepte</a> </li>
                     <li> <a href="../Trainingsplane.php">Trainingspläne</a> </li>
                 </ul>
@@ -68,4 +67,3 @@
         </ul>
     </nav>
     <div class="main">
-        <h1 class="pagename"><?php echo $pageTitle; ?></h1>

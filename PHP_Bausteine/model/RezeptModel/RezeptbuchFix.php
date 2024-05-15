@@ -17,7 +17,7 @@ class RezeptbuchFix implements RezeptbuchDAO
     {
         $this->rezepte[0] = new Rezept("Kartoffelsalat", "Kartoffelsalat mit Gurken und Zwiebeln", "/Pictures/Tofu.JPG");
         $this->rezepte[1] = new Rezept("Spaghetti Carbonara", "Spaghetti mit EReis mit Tofu (25 Likes)i, Speck und Parmesan","/Pictures/Tofu.JPG");
-        $this->rezepte[2] = new Rezept("Käsespätzle", "Spätzle mit Käse überbacken", "/Pictures/Tofu.JPG");
+        $this->rezepte[2] = new Rezept("Käsespätzle", "Spätzle mit Käse überbacken. Wie lecker!", "/Pictures/Tofu.JPG");
     }
 
     public function neuesRezept($title_recipe, $text_recipe, $picture_recipe)

@@ -4,6 +4,7 @@ require './PHP_Bausteine/head.php';
 ?>
 <h1 class="pagename"> Nutzerliste</h1>
 <ul class="AdminList">
+    <li>
     <article class="NutzerListIndex">
         <h3>Mail</h3>
         <h3>Beitrittsdatum</h3>
@@ -11,6 +12,8 @@ require './PHP_Bausteine/head.php';
         <h3>Erstellte Trainingspläne</h3>
         <h3>Nutzer</h3>
     </article>
+    </li>
+    <li>
     <article class="NutzerListElement">
         <p>maxm@mail.de</p>
         <p>12.02.2024</p>
@@ -18,6 +21,7 @@ require './PHP_Bausteine/head.php';
         <p>7</p>
         <a>Sprung</a>
     </article>
+    </li>
 </ul>
 <?php
 require './PHP_Bausteine/foot.php';

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 60px;
 }
@@ -14,10 +15,11 @@
 .Objekt{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-content: space-between;
+    align-content: flex-start;
     align-items: center;
     width: 400px;
+    gap: 0;
+    margin: 0;
 }
 .Objekt img{
     width: 100%;
@@ -40,6 +42,7 @@
     border-top-width: 0;
     background-color: #C6F7E9;
     max-width: 400px;
+    width: 100%;
 }
 
 .TrainingsplanObjekt{
@@ -54,5 +57,25 @@
     background-color: #C6F7E9;
     width: 400px;
     padding: 30px;
+}
 
+.AdminList {
+    display: grid;
+    gap: 40px;
+    list-style: none;
+    overflow-scrolling: auto;
+    min-width: 700px;
+    border: 2px solid #5FE3C0;
+    border-radius: 10px;
+
+}
+
+.AdminListElement,
+.AdminListIndex {
+    grid-template-columns: [first] 2fr [line2] 2fr [line3] 1fr [col4-start] 0.5fr [five] 0.5fr [end];
+}
+
+.NutzerListElement,
+.NutzerListIndex {
+    display: grid;
 }

@@ -8,7 +8,7 @@ $rezepte = Rezeptbuch::getInstance()->getAllRezepte();
 <h1 class="centerPagename"> Rezepte</h1>
 <div class="Objektliste">
 
-    <?php foreach ($rezepte as $rezept): /*TODO: Hier fliegt uns aufgrund der foreach Schleife noch das CSS um die Ohren*/?>
+    <?php foreach ($rezepte as $rezept): ?>
             <div class="Objekt">
                 <img src="<?=htmlspecialchars($rezept -> getPictureRecipe())?>" alt="Karte">
                 <div class="inneresObjekt">

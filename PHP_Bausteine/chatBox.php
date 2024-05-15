@@ -10,10 +10,9 @@
     <div class="chat-container">
         <div>Begrüße deinen Trainingsparter</div>
     </div>
-    <form id="chat-form" >
-        <label for="input-chatbox"></label>
-        <input id="input-chatbox" placeholder="Nachricht eingeben">
-        <button class="button" type="submit">Senden</button>
+    <form id="chat-form" method="post" >
+        <label for="input-chatbox"> Neue Nachricht<input id="input-chatbox" placeholder="Nachricht eingeben"></label>
+        <button class="ChatButton" type="submit">Senden</button>
     </form>
 </body>
 </html>

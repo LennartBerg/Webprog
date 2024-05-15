@@ -185,20 +185,7 @@ header {
 
 
 
-.AdminList {
-    display: grid;
-    gap: 40px;
-}
 
-.AdminListElement,
-.AdminListIndex {
-    grid-template-columns: [first] 2fr [line2] 2fr [line3] 1fr [col4-start] 0.5fr [five] 0.5fr [end];
-}
-
-.NutzerListElement,
-.NutzerListIndex {
-    display: grid;
-}
 @media screen and (min-width: 600px){
     .NutzerListElement, .NutzerListIndex{
         grid-template-columns: [first] 2fr [line2] 1fr [line3] 0.8fr [col4-start] 1fr [five] 0.5fr [end];

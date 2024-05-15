@@ -27,6 +27,16 @@ button {
     border-radius: 10px;
     /*Damit der Button nicht den Namen überlagert*/
 }
+.ChatButton{
+    background-color: #5FE3C0;
+    color: #102A43;
+    padding: 10px 30px;
+    display: inline-block;
+    border: 2px solid #5FE3C0;
+    border-radius: 10px;
+    height: 44px;
+    margin: 8px;
+}
 
 .EntryButton {
     background-color: #004440;
@@ -35,7 +45,6 @@ button {
     display: inline-block;
     border: 2px solid #C6F7E9;
     border-radius: 10px;
-    /*Damit der Button nicht den Namen überlagert*/
 }
 
 input {
