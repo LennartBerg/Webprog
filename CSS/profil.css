@@ -1,0 +1,14 @@
+.ProfilList {
+    display: grid;
+    gap: 40px;
+}
+
+.ProfilListElement,
+.ProfilListIndex {
+    display: grid;
+    grid-template-columns: [first] 2fr [line2] 2fr [line3] 2fr [line4] 2fr [line5] 2fr [end];
+}
+
+select{
+    background-color: #C6F7E9;
+}

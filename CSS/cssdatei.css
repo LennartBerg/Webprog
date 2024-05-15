@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('chat.css');
+@import url('layout.css');
+@import url('profil.css');
+@import url('formulare.css');
+@import url('headers.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+svg,
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #F0FCF9;
+    color: #102A43;
+}
+
+header {
+    font-size: 27px;
+    background-image: linear-gradient(to top, #048271, #334E68);
+    color: #F0FCF9;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.homeIcon {
+    width: 24px;
+    fill: #F0FCF9;
+}
+
+@media screen and (min-width: 960px) {
+    .navigation {
+        position: sticky;
+        top: 0;
+    }
+
+    .menu ul {
+        display: none;
+        position: absolute;
+        background-color: #048271;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: stretch;
+        background-color: #048271;
+    }
+
+    .menu li:hover > a,
+    .menu li:hover > span {
+        background-color: #334E68;
+        color: #F0FCF9;
+    }
+
+    .menu li:hover ul {
+        display: block;
+    }
+    .menu ul,
+    .menu {
+        list-style: none;
+        color: #F0FCF9;
+        font-size: 18px;
+    }
+    .menu a,
+    .menu span {
+        text-decoration: none;
+        color: inherit;
+        padding: 0 20px;
+        height: 100%;
+        line-height: 50px;
+        display: flex;
+    }
+
+    .menu span a {
+        background-color: #334E68;
+    }
+    .title {
+        text-align: left;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 200px;
+        max-width: 960px;
+    }
+
+    .slogan {
+        text-align: left;
+        padding-left: 200px;
+        padding-bottom: 20px;
+        font-style: italic;
+    }
+
+    .foot {
+        background-color: #C6F7E9;
+        justify-content: center;
+        gap: 40px;
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 960px) {
+    .foot {
+        background-color: #C6F7E9;
+        gap: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+    }
+    .menu ul {
+        padding-left: 40px;
+    }
+
+    .menu ul,
+    .menu {
+        list-style: none;
+        color: #F0FCF9;
+        font-size: 18px;
+    }
+
+    .menu {
+        background-color: #048271;
+        padding-left: 20px;
+    }
+
+    .menu a,
+    .menu span {
+        text-decoration: none;
+        color: inherit;
+        padding: 0 20px;
+        height: 100%;
+        line-height: 50px;
+        display: flex;
+    }
+    .title {
+        text-align: left;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+    }
+
+    header h5 {
+        text-align: left;
+        padding-left: 70px;
+        padding-bottom: 20px;
+        font-style: italic;
+    }
+}
+.main {
+    max-width: 960px;
+    padding: 40px 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.foot a {
+    color: rgb(55, 66, 68);
+    text-decoration: none;
+}
+
+.partner-container{
+    display: grid;
+    overflow-y : scroll;
+    width: 300px;
+    height: 400px;
+}
+
+
+.splitscreen {
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+
+
+.AdminList {
+    display: grid;
+    gap: 40px;
+}
+
+.AdminListElement,
+.AdminListIndex {
+    grid-template-columns: [first] 2fr [line2] 2fr [line3] 1fr [col4-start] 0.5fr [five] 0.5fr [end];
+}
+
+.NutzerListElement,
+.NutzerListIndex {
+    display: grid;
+}
+@media screen and (min-width: 600px){
+    .NutzerListElement, .NutzerListIndex{
+        grid-template-columns: [first] 2fr [line2] 1fr [line3] 0.8fr [col4-start] 1fr [five] 0.5fr [end];
+    }
+}
+
+
+.NutzerListIndex {
+    background-color: #5FE3C0;
+}
+
+.AdminListIndex {
+    background-color: #5FE3C0;
+}
+
+.AdminList {
+    background-color: #C6F7E9;
+}
+
+.Registerview {
+    display: grid;
+    gap: 20px;
+}
