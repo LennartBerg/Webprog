@@ -11,5 +11,8 @@ require './PHP_Bausteine/nav.php';
 <div class="main">
 
 </div>
+<?php
+require './PHP_Bausteine/foot.php';
+?>
 </body>
 </html>

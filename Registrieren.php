@@ -41,20 +41,21 @@ $form_data = isset($_SESSION['form_registrierung']) ? $_SESSION['form_registrier
                 <input id="weight" type="number" name="weight" placeholder="90" min="0"
                        value="<?php echo htmlspecialchars($form_data['weight'] ?? ''); ?>">
             </label>
-            <label for="trainingLocation">Trainingsort:<br>
-                <select name="trainingLocation" id="trainingLocation">
-                    <option value="" disabled <?php echo empty($form_data['trainingLocation']) ? 'selected' : ''; ?>>Trainingsort auswählen</option>
-                    <option value="Oldenburg" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Oldenburg') ? 'selected' : ''; ?>>Oldenburg</option>
-                    <option value="Bremen" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Bremen') ? 'selected' : ''; ?>>Bremen</option>
-                    <option value="Hamburg" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Hamburg') ? 'selected' : ''; ?>>Hamburg</option>
-                </select>
-            </label>
+            <p>Trainingsort:<br>
+                <input class="registerInput" type="checkbox" id="trainingLocation" name="Oldenburg" value="Oldenburg" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Oldenburg') ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="trainingLocation"> Oldenburg</label><br>
+                <input class="registerInput" type="checkbox" id="trainingLocation" name="Bremen" value="Bremen" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Bremen') ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="trainingLocation"> Bremen</label><br>
+                <input class="registerInput" type="checkbox" id="trainingLocation" name="Hamburg" value="Hamburg" <?php echo (isset($form_data['trainingLocation']) && $form_data['trainingLocation'] == 'Hamburg') ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="trainingLocation"> Hamburg</label><br>
+            </p>
             <label for="sportstypes">Sportarten:<br>
-                <select name="sportstypes[]" size="3" multiple id="sportstypes">
-                    <option value="weightlifting" <?php echo (isset($form_data['sportstypes']) && in_array('weightlifting', $form_data['sportstypes'])) ? 'selected' : ''; ?>>Kraftsport</option>
-                    <option value="teamsports" <?php echo (isset($form_data['sportstypes']) && in_array('teamsports', $form_data['sportstypes'])) ? 'selected' : ''; ?>>Teamsportart</option>
-                    <option value="individualsports" <?php echo (isset($form_data['sportstypes']) && in_array('individualsports', $form_data['sportstypes'])) ? 'selected' : ''; ?>>Einzelsportart</option>
-                </select>
+                <input class="registerInput" type="checkbox" id="sportstypes" name="weightlifting" value="weightlifting" <?php echo (isset($form_data['sportstypes']) && in_array('weightlifting', $form_data['sportstypes'])) ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="weightlifting"> Kraftsport</label><br>
+                <input class="registerInput" type="checkbox" id="sportstypes" name="teamsports" value="teamsports" <?php echo (isset($form_data['sportstypes']) && in_array('teamsports', $form_data['sportstypes'])) ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="teamsports"> Teamsportart</label><br>
+                <input class="registerInput" type="checkbox" id="sportstypes" name="individualsports" value="individualsports" <?php echo (isset($form_data['sportstypes']) && in_array('individualsports', $form_data['sportstypes'])) ? 'checked' : ''; ?>>
+                <label class="registerLabel" for="individualsports"> Einzelsportart</label><br>
             </label>
             <label for="goals">Ausrichtung des Trainings:<br>
                 <select name="goals" size="3" id="goals">

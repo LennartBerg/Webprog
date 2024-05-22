@@ -168,6 +168,8 @@ header {
     padding: 40px 20px;
     margin-left: auto;
     margin-right: auto;
+    flex-grow: 1;
+    width: 100%;
 
 }
 .foot a {
