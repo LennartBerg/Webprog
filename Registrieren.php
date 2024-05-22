@@ -1,23 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <?php
-session_start();
 $pageTitle = "Registrieren";
 require './PHP_Bausteine/head.php';
-
-// Fehlermeldung anzeigen, falls vorhanden
-if (isset($_SESSION['error'])) {
-    echo "<p class='error'>" . $_SESSION['error'] . "</p>";
-    unset($_SESSION['error']);
-}
-
-// Vorhandene Formulardaten abrufen, falls vorhanden
+require './PHP_Bausteine/nav.php';
 $form_data = isset($_SESSION['form_registrierung']) ? $_SESSION['form_registrierung'] : [];
 ?>
-    <body>
-<?php
-require './PHP_Bausteine/nav.php';
-?>
+<body>
     <div class="main">
 <h1 class="centerPagename"> Registrieren</h1>
     <br>
