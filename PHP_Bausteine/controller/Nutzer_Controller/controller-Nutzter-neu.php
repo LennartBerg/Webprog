@@ -6,6 +6,16 @@ if (!isset($abs_path)) {
 require_once $abs_path . "/PHP_Bausteine/model/NutzerModel/NutzerListe.php";
 require_once $abs_path . "/PHP_Bausteine/model/NutzerModel/Nutzer.php";
 
+$_SESSION['form_registrierung']["email"] = $_POST["email"];
+$_SESSION['form_registrierung']["password1"] = $_POST["password"];
+$_SESSION['form_registrierung']["password2"] = $_POST["password"];
+$_SESSION['form_registrierung']["name"] = $_POST["name"];
+$_SESSION['form_registrierung']["birthdate"] = $_POST["birthdate"];
+$_SESSION['form_registrierung']["height"] = $_POST["height"];
+$_SESSION['form_registrierung']["weight"] = $_POST["weight"];
+$_SESSION['form_registrierung']["trainingLocation"] = $_POST["trainingLocation"];
+$_SESSION['form_registrierung']["sportstypes"] = $_POST["sportstypes"];
+
 
 $email = isset($_SESSION['form_registrierung']['email']) ? $_SESSION['form_registrierung']['email'] : "";
 $password1 = isset($_SESSION['form_registrierung']['password1']) ? $_SESSION['form_registrierung']['password1'] : "";
@@ -33,7 +43,6 @@ if(!isset($_POST[$email]) || !isset($_POST[$password]) || !isset($_POST[$name]))
 }
 try{
     NutzerListe::getInstance() ->  neuerNutzer($email,$password,$name,$birthdate,$height,$weight,$trainingLocation,$height,$goals);
-    //var_dump(NutzerListe::getInstance()); Ist zum debuggen, loesche ich später!!!!!11!!!!1!!!
 } catch (InternerFehlerNutzerDatenbankException $exc){
     $_SESSION["message"] = "internal_error";
     header("Location: /index.php");
