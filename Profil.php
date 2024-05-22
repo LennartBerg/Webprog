@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="de">
 <?php
 $pageTitle = "Profil";
 require './PHP_Bausteine/head.php';
 ?>
+    <body>
+<?php
+require './PHP_Bausteine/nav.php';
+?>
+    <div class="main">
 <h1 class="pagename"> Profil</h1>
 <br>
 <div>
@@ -63,6 +70,9 @@ require './PHP_Bausteine/head.php';
     </form>
     <br>
 </div>
+    </div>
 <?php
 require './PHP_Bausteine/foot.php';
 ?>
+    </body>
+</html>

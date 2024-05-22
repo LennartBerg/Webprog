@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="de">
 <?php
 $pageTitle = "Nutzerliste";
 require './PHP_Bausteine/head.php';
 ?>
+    <body>
+<?php
+require './PHP_Bausteine/nav.php';
+?>
+    <div class="main">
 <h1 class="pagename"> Nutzerliste</h1>
 <ul class="AdminList">
     <li>
@@ -23,6 +30,9 @@ require './PHP_Bausteine/head.php';
     </article>
     </li>
 </ul>
+    </div>
 <?php
 require './PHP_Bausteine/foot.php';
 ?>
+    </body>
+</html>

@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="de">
 <?php
 $pageTitle = "Home";
 require './PHP_Bausteine/head.php';
 ?>
+    <body>
+<?php
+require './PHP_Bausteine/nav.php';
+?>
+    <div class="main">
 <h1 class="centerPagename"> Home</h1>
 <br><br>
 <h2 class="centerPagename">Neue Rezepte</h2>
@@ -69,6 +76,9 @@ require './PHP_Bausteine/head.php';
         <button class="EntryButton" type="submit"><b>Trainingsplan favorisieren</b></button>
     </div>
 </div>
+    </div>
 <?php
 require './PHP_Bausteine/foot.php';
 ?>
+</body>
+</html>

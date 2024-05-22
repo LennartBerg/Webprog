@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="de">
 <?php
 $pageTitle = "Registrieren";
 require './PHP_Bausteine/head.php';
 ?>
+    <body>
+<?php
+require './PHP_Bausteine/nav.php';
+?>
+    <div class="main">
 <h1 class="centerPagename"> Registrieren</h1>
     <br>
     <div class="Einloggen">
@@ -66,7 +73,9 @@ require './PHP_Bausteine/head.php';
     <button class="button" type="submit"><b>abschicken</b></button>
 </form>
     </div>
-
+    </div>
 <?php
 require './PHP_Bausteine/foot.php';
 ?>
+    </body>
+</html>
