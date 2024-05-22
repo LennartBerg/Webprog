@@ -9,27 +9,34 @@ require './PHP_Bausteine/head.php';
 require './PHP_Bausteine/nav.php';
 ?>
     <div class="main">
-<h1 class="pagename"> Nutzerliste</h1>
-<ul class="AdminList">
-    <li>
-    <article class="NutzerListIndex">
-        <h3>Mail</h3>
-        <h3>Beitrittsdatum</h3>
-        <h3>Erstellte Rezepte</h3>
-        <h3>Erstellte Trainingspläne</h3>
-        <h3>Nutzer</h3>
-    </article>
-    </li>
-    <li>
-    <article class="NutzerListElement">
-        <p>maxm@mail.de</p>
-        <p>12.02.2024</p>
-        <p>3</p>
-        <p>7</p>
-        <a>Sprung</a>
-    </article>
-    </li>
-</ul>
+        <h1 class="pagename"> Nutzerliste</h1>
+        <div class="NutzerListContainer">
+            <div class="user-list-container">
+                <div class="grid-list">
+                    <div class="grid-header">Email</div>
+                    <div class="grid-header">Beitrittsdatum</div>
+                    <div class="grid-header">Beigetretenen Treffen</div>
+                    <div class="grid-header">Aktionen</div>
+
+                    <div class="grid-item">user1@examplas,dnasdnasnd,nasd,nas,e.com</div>
+                    <div class="grid-item">2022-01-15</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">
+                        <button onclick="deleteUser('user1@example.com')">Löschen</button>
+                        <button onclick="viewProfile('user1')">Profil</button>
+                    </div>
+
+                    <div class="grid-item">user2@example.com</div>
+                    <div class="grid-item">2023-03-22</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">
+                        <button onclick="deleteUser('user2@example.com')">Löschen</button>
+                        <button onclick="viewProfile('user2')">Profil</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 <?php
 require './PHP_Bausteine/foot.php';

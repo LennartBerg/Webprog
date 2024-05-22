@@ -1,0 +1,54 @@
+.user-list-container {
+    padding-top: 20px;
+    overflow-x: auto;
+    width: 80vw;
+}
+
+
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 800px;
+}
+
+.grid-header {
+    font-weight: bold;
+    background-color:#334E68;
+    color: #F0F4F8;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.grid-item {
+    background-color: #D9E2EC;
+    border: 1px solid #243B53;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    align-content: center;
+    min-width: 200px;
+    overflow-x: auto;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #F0F4F8;
+    color: #334E68;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #243B53;
+    color: #F0F4F8;
+}
