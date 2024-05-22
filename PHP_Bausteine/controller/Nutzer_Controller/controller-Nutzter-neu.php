@@ -7,16 +7,18 @@ require_once $abs_path . "/PHP_Bausteine/model/NutzerModel/NutzerListe.php";
 require_once $abs_path . "/PHP_Bausteine/model/NutzerModel/Nutzer.php";
 
 
-$email = isset($_POST[htmlspecialchars("email")]) ? $_POST[htmlspecialchars("email")] : "";
-$password1 = isset($_POST[htmlspecialchars("password1")]) ? $_POST[htmlspecialchars("password1")] : "";
-$password2 = isset($_POST[htmlspecialchars("password2")]) ? $_POST[htmlspecialchars("password2")] : "";
-$name = isset($_POST[htmlspecialchars("name")]) ? $_POST[htmlspecialchars("name")] : "";
-$birthdate = isset($_POST[htmlspecialchars("birthdate")]) ? $_POST[htmlspecialchars("birthdate")] : "";
-$height = isset($_POST[htmlspecialchars("height")]) ? $_POST[htmlspecialchars("height")] : "";
-$weight = isset($_POST[htmlspecialchars("weight")]) ? $_POST[htmlspecialchars("weight")] : "";
-$trainingLocation = isset($_POST[htmlspecialchars("trainingLocation")]) ? $_POST[htmlspecialchars("trainingLocation")] : "";
-$sportstypes = isset($_POST[htmlspecialchars("sportstypes")]) ? $_POST[htmlspecialchars("sportstypes")] : "";
-$goals = isset($_POST[htmlspecialchars("goals")]) ? $_POST[htmlspecialchars("goals")] : "";
+$email = isset($_SESSION['form_registrierung']['email']) ? $_SESSION['form_registrierung']['email'] : "";
+$password1 = isset($_SESSION['form_registrierung']['password1']) ? $_SESSION['form_registrierung']['password1'] : "";
+$password2 = isset($_SESSION['form_registrierung']['password2']) ? $_SESSION['form_registrierung']['password2'] : "";
+$name = isset($_SESSION['form_registrierung']['name']) ? $_SESSION['form_registrierung']['name'] : "";
+$birthdate = isset($_SESSION['form_registrierung']['birthdate']) ? $_SESSION['form_registrierung']['birthdate'] : "";
+$height = isset($_SESSION['form_registrierung']['height']) ? $_SESSION['form_registrierung']['height'] : "";
+$weight = isset($_SESSION['form_registrierung']['weight']) ? $_SESSION['form_registrierung']['weight'] : "";
+$trainingLocation = isset($_SESSION['form_registrierung']['trainingLocation']) ? $_SESSION['form_registrierung']['trainingLocation'] : "";
+$sportstypes = isset($_SESSION['form_registrierung']['sportstypes']) ? $_SESSION['form_registrierung']['sportstypes'] : "";
+$goals = isset($_SESSION['form_registrierung']['goals']) ? $_SESSION['form_registrierung']['goals'] : "";
+
+
 
 if($password1 != $password2){
     $_SESSION["message"] = "passwords_not_matching";
