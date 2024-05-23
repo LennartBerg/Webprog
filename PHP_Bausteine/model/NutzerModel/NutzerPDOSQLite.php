@@ -20,6 +20,8 @@ class NutzerListePDOSQLite implements NutzerListeDAO
         return self::$instance;
     }
 
+
+
     public function neuerNutzer($email, $password, $name, $birthdate, $height, $weight, $trainingsLocation, $sportstypes, $goals)
     {
         try {
