@@ -6,7 +6,20 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
 
     public function neuesTreffen($name, $ort, $datum, $ersteller, $zeit, $beschreibung)
     {
-        // TODO: Implement neuesTreffen() method.
+        try {
+            $db = new Connection();
+            $sql = "INSERT INTO TreffenListe (name, ort, datum, ersteller, zeit, beschreibung) VALUES (:name, :ort, :ersteller, :zeit, :beschreibung);";
+            $command = $db->prepare($sql);
+            if (!$command) {
+                throw new InternerFehlerException();
+            }
+            if (!$command->execute([":name" => $name, ":ort" => $ort,":datum" => $datum, ":ersteller" => $ersteller, ":zeit" => $zeit, ":beschreibung" => $beschreibung])) {
+                throw new InternerFehlerException();
+            }
+            return intval($db->lastInsertId());
+        } catch (PDOException $exc) {
+            throw new InternerFehlerException();
+        }
     }
 
     public function getTreffen($TreffenID)

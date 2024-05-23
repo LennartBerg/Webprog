@@ -78,7 +78,7 @@ class Connection{
     {
         $this ->exec("
                 CREATE TABLE NutzerListe (
-                    NUtzerID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    NutzerID INTEGER PRIMARY KEY AUTOINCREMENT,
                     email TEXT,
                     password TEXT,
                     name TEXT,
