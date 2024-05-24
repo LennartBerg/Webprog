@@ -24,7 +24,25 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
 
     public function getTreffen($TreffenID)
     {
-        // TODO: Implement getTreffen() method.
+        try {
+            $db = new Connection();
+            $sql = "SELECT * FROM TreffenListe WHERE id=:id LIMIT 1";
+            $command = $db->prepare($sql);
+            if (!$command) {
+                throw new InternerFehlerException();
+            }
+            if (!$command->execute([":id" => $TreffenID])) {
+                throw new InternerFehlerException();
+            }
+            $result = $command->fetchAll();
+            if (empty($result)) {
+                throw new FehlendesTreffenException();
+            }
+            $entry = $result[0];
+            return new Treffen($entry["TreffenID"], $entry["ort"], $entry["datum"], $entry["ersteller"], $entry["zeit"], $entry["beschreibung"]);
+        } catch (PDOException $exc) {
+            throw new InternerFehlerException();
+        }
     }
 
     public function loescheTreffen($TreffenID)
