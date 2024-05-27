@@ -58,7 +58,7 @@ unset($_POST["weight"]);
 unset($_POST["trainingLocation"]);
 unset($_POST["sportstypes"]);
 unset($_POST["goals"]);
-header("Location: /index.php"); //Keine Ahnung weswegen der mich nicht weiterleitet zu index.php -> Kann mir das Jemand beantworten ?
+header("Location: ../../../index.php"); //Keine Ahnung weswegen der mich nicht weiterleitet zu index.php -> Kann mir das Jemand beantworten ?
 ?>
 
 

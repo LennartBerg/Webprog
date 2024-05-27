@@ -18,6 +18,7 @@ class Connection{
             $dsn = 'sqlite:' . $abs_path . '/Gymder.db';
             $db = PDO($dsn, $user, $pw);
             $db -> checkTables();
+            $db -> checkExpiryDateofTreffen();
             return $this -> db;
         } catch (PDOException $e) {
             throw new InternerFehlerException();
@@ -103,8 +104,8 @@ class Connection{
                     TreffenID INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT UNIQUE NOT NULL,
                     ort TEXT,
-                    datum TEXT,
-                    zeit TEXT,
+                    datum DATE,
+                    zeit TIME,
                     beschreibung TEXT,
                     teilnehmer TEXT,
                     ersteller NutzerID,
@@ -114,5 +115,11 @@ class Connection{
         $this->exec("
                 INSERT INTO TreffenListe (name, ort, datum, zeit, beschreibung, teilnehmer, ersteller) VALUES
                 ('Test Treffen 1', 'Berlin', '2020-01-01', '12:00', 'Test Treffen 1 Beschreibung', '1', '1');");
+    }
+    function checkExpiryDateofTreffen()
+    {
+        $this ->exec("
+            DELETE FROM TreffenListe WHERE datum < date('now') && zeit < time('now');
+        ");
     }
 }
