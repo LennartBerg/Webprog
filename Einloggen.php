@@ -3,7 +3,7 @@
 <?php
 $pageTitle = "Einloggen";
 require './PHP_Bausteine/head.php';
-$form_registrieren = isset($_SESSION['form_registrierung']) ? $_SESSION['form_registrierung'] : [];
+$form_einloggen = isset($_SESSION['Form_einloggen']) ? $_SESSION['Form_einloggen'] : [];
 ?>
 <body>
 <?php
