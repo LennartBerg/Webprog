@@ -41,7 +41,7 @@ class NutzerListePDOSQLite implements NutzerListeDAO
     }
 
     /**
-     * ToDO: id in TreffenID änder
+     * ToDO: id in TreffenID ändern
      */
     public function getNutzer($id)
     {

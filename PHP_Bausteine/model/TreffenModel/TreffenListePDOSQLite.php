@@ -82,8 +82,34 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
         }
     }
 
+
+    /**
+     * @return array of all Treffen to show up in controller-Treffen-anzeigen.php to use in a foreach loop in index.php
+     * comment function missing in Properties of Treffen.php so users can interact with each other
+     */
+
     public function getAllTreffen()
     {
-        // TODO: Implement getAllTreffen() method.
+        try {
+            $db = new Connection();
+            $sql = "SELECT * FROM TreffenListe";
+            $command = $db->prepare($sql);
+            if (!$command) {
+                throw new InternerFehlerException();
+            }
+            if (!$command->execute()) {
+                throw new InternerFehlerException();
+            }
+            $result = $command->fetchAll();
+
+            $entries = [];
+            foreach ($result as $row) {
+                $entry = new Treffen($row["TreffenID"], $row["ort"], $row["datum"], $row["ersteller"], $row["zeit"], $row["beschreibung"]);
+                $entries[] = $entry;
+            }
+            return $entries;
+        } catch (PDOException $exc) {
+            throw new InternerFehlerException();
+        }
     }
 }
