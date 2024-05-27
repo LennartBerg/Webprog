@@ -19,8 +19,8 @@ try {
     $id = intval($_GET["id"]);
 
     // Kontaktierung des Models (Geschaeftslogik)
-    $gaestebuch = NutzerListe::getInstance();
-    $eintrag = $gaestebuch->getEintrag($id);
+    $NutzerListe = NutzerListe::getInstance();
+    $Nutzer = $NutzerListe->getNutzer($id);
 } catch (FehlenderNutzerException $exc) {
     // Behandlung von potentiellen Fehlern der Geschaeftslogik
     $_SESSION["message"] = "invalid_nutzer_id";
