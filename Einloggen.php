@@ -12,8 +12,12 @@ require './PHP_Bausteine/nav.php';
 <h1 class="centerPagename">Einloggen</h1>
 <div class="Einloggen">
     <form class="Einloggen-Form" method="post">
-        <label for="loginUsername">Email:<input type="email" id="loginUsername" required placeholder="mail@provider.com"></label>
-        <label for="loginPassword">Passwort:<input type="password" id="loginPassword" required placeholder="Passwort"></label>
+        <label for="loginUsername">Email:
+            <input type="email" id="loginUsername" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
+        </label>
+        <label for="loginPassword">Passwort:
+            <input type="password" id="loginPassword" required placeholder="Passwort" value="<?php echo htmlspecialchars($form_registrieren['loginPassword'] ?? ''); ?> " >
+        </label>
         <button class="CenterButton" type="submit">einloggen</button>
     </form>
 </div>
