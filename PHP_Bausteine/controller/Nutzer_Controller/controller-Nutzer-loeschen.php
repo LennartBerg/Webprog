@@ -9,7 +9,7 @@ $NutzerID = isset($_POST[htmlspecialchars("NutzerID")]) ? $_POST[htmlspecialchar
 
 if(!isset($_POST[$NutzerID])){
     $_SESSION["message"] = "missing_data";
-    header("Location: /Profil.php");
+    header("Location: ../../../Profil.php");
     exit;
 }
 try{
@@ -17,11 +17,11 @@ try{
     exit;
 } catch (InternerFehlerInNutzerDatenbankException $exc){
     $_SESSION["message"] = "internal_error";
-    header("Location: /index.php");
+    header("Location: ../../../index.php");
     exit;
 }
 
 unset($_POST["NutzerID"]);
 
-header("Location: /Rezepte.php");
+header("Location: ../../../Rezepte.php");
 ?>

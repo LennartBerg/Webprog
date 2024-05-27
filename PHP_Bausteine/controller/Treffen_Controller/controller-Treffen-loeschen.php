@@ -17,7 +17,7 @@ try{
     exit;
 } catch (InternerFehlerInTreffenDatenbankException $exc){
     $_SESSION["message"] = "internal_error";
-    header("Location: /index.php");
+    header("Location: ../../../index.php");
     exit;
 }
 

@@ -14,10 +14,10 @@ require './PHP_Bausteine/nav.php';
 <div class="Einloggen">
     <form class="Einloggen-Form" method="post">
         <label for="loginUsername">Email:
-            <input type="email" id="loginUsername" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
+            <input type="email" id="loginUsername" name="name" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
         </label>
         <label for="loginPassword">Passwort:
-            <input type="password" id="loginPassword" placeholder="Passwort" required  name="password">
+            <input type="password" id="loginPassword" name="password" placeholder="Passwort" required  >
         </label>
         <button class="CenterButton" type="submit">einloggen</button>
     </form>

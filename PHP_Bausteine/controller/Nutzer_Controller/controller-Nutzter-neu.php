@@ -32,20 +32,20 @@ $goals = isset($_SESSION['form_registrierung']['goals']) ? $_SESSION['form_regis
 
 if($password1 != $password2){
     $_SESSION["message"] = "passwords_not_matching";
-    header("Location: /Registrieren.php");
+    header("Location: ../../../Registrieren.php");
     exit;
 } else { $password = $password1;}
 
 if(!isset($_POST[$email]) || !isset($_POST[$password]) || !isset($_POST[$name])){
     $_SESSION["message"] = "email, password, name failure";
-    header("Location: /Registrieren.php");
+    header("Location: ../../../Registrieren.php");
     exit;
 }
 try{
     NutzerListe::getInstance() ->  neuerNutzer($email,$password,$name,$birthdate,$height,$weight,$trainingLocation,$height,$goals);
 } catch (InternerFehlerNutzerDatenbankException $exc){
     $_SESSION["message"] = "internal_error";
-    header("Location: /index.php");
+    header("Location: ../../../index.php");
 }
 
 unset($_POST["email"]);
