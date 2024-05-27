@@ -10,10 +10,8 @@ class Nutzer{
     private $trainingLocation;
     private $sportstypes;
     private $goals;
-    private $userID;
 
     public function __construct($email, $password, $name, $birthdate, $height, $weight, $trainingLocation, $sportstypes, $goals){
-        global $NutzerID;
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
@@ -23,8 +21,6 @@ class Nutzer{
         $this->setTrainingLocation($trainingLocation);
         $this->setSportstypes($sportstypes);
         $this->setGoals($goals);
-        $this->userID = $NutzerID;
-        $NutzerID++;
     }
 
     public function getEmail(){

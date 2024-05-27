@@ -5,7 +5,6 @@ if (!isset($abs_modelpath)) {
 require $abs_modelpath . "/NutzerModel/Nutzer.php";
 
 class Treffen{
-    private $TreffenID;
     private $name;
     private $ort;
     private $datum;

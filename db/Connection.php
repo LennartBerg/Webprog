@@ -79,9 +79,9 @@ class Connection{
         $this ->exec("
                 CREATE TABLE NutzerListe (
                     NutzerID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    email TEXT,
+                    email TEXT UNIQUE NOT NULL, /* UNIQUE NOT NULL macht den quatsch zum Primär-Key*/
                     password TEXT,
-                    name TEXT,
+                    name UNiQUE NOT NULL, 
                     birthdate TEXT,
                     height INTEGER,
                     weight INTEGER,
@@ -101,7 +101,7 @@ class Connection{
         $this->exec("
                 CREATE TABLE TreffenListe (
                     TreffenID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
+                    name TEXT UNIQUE NOT NULL,
                     ort TEXT,
                     datum TEXT,
                     zeit TEXT,
