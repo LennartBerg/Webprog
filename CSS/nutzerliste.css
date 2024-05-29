@@ -36,7 +36,7 @@
     overflow-x: auto;
 }
 
-button {
+.Nutzerbutton {
     margin: 5px;
     padding: 5px 10px;
     border: none;
@@ -46,7 +46,7 @@ button {
     border-radius: 4px;
 }
 
-button:hover {
+.Nutzerbutton:hover {
     background-color: #243B53;
     color: #F0F4F8;
 }

@@ -40,15 +40,6 @@
     width: 100%;
 }
 
-.registerLabel{
-    text-align: center;
-}
-
-.registerInput{
-    width: 10px;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    border: 2px solid #102A43;
-    border-radius: 4px;
+.error {
+    color: #D64545;
 }
