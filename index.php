@@ -18,24 +18,14 @@ $treffen = $treffenController->getAllTreffen();
             <div class="Objektliste">
                 <?php foreach ($treffen as $treffen): ?>
                     <div class="Objekt">
-                        <img src="Pictures/Tofu.JPG" alt="Karte"">
                         <div class="inneresObjekt">
-                            <h3><?php echo $treffen->getTitel(); ?></h3>
+                            <h3><?php echo $treffen->getName(); ?></h3>
                             <h5><?php echo $treffen->getErsteller(); ?></h5>
                             <p class="entryText"><?php echo $treffen->getBeschreibung(); ?></p>
                             <button class="EntryButton" type="submit"><b>Treffen beitreten</b></button>
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <div class="Objekt">
-                    <img src="Pictures/Tofu.JPG" alt="Karte"">
-                    <div class="inneresObjekt">
-                        <h3>Reis mit Tofu</h3>
-                        <h5>Max Mustermann</h5>
-                        <p class="entryText">Folgendes Rezept besteht aus Reis und schmeckt leider nicht</p>
-                        <button class="EntryButton" type="submit"><b>Rezept favorisieren</b></button>
-                    </div>
-                </div>
             </div>
             <br><br>
         </div>

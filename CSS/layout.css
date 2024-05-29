@@ -16,13 +16,6 @@
     gap: 0;
     margin: 0;
 }
-.Objekt img{
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
 .inneresObjekt{
     display: flex;
     gap: 15px;
@@ -32,9 +25,7 @@
     align-items: center;
     padding: 30px;
     border: 2px solid #5FE3C0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-width: 0;
+    border-radius: 10px;
     background-color: #C6F7E9;
     max-width: 400px;
     width: 100%;
