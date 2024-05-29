@@ -26,6 +26,7 @@ $treffen = $treffenController->getAllTreffen();
                             <button class="EntryButton" type="submit"><b>Treffen beitreten</b></button>
                         </div>
                     </div>
+                <?php endforeach; ?>
                 <div class="Objekt">
                     <img src="Pictures/Tofu.JPG" alt="Karte"">
                     <div class="inneresObjekt">
