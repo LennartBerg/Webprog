@@ -1,4 +1,7 @@
 <?php
+
+namespace PHP_Bausteine\model\NutzerModel;
+
  $NutzerID = 0;
 class Nutzer{
     private $email;

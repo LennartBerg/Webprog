@@ -14,11 +14,12 @@
                 </svg><span class="VisuallyHidden">Home</span></a> </li>
         <li> <a href="../Profil.php">Profil</a> </li>
         <li> <a href="../Nutzerliste.php">Nutzerliste</a> </li>
+        <li> <a href="../treffenErstellen.php">Neues Treffen</a> </li>
         <?php if (!isset($_SESSION['Name'])) { ?>
             <li> <span>Einloggen/ Registrieren</span>
                 <ul>
-                    <li> <a href="../Registrieren.php">Registrieren</a> </li>
-                    <li> <a href="../Einloggen.php">Einloggen</a> </li>
+                    <li> <a href="Registrieren.php">Registrieren</a> </li>
+                    <li> <a href="Einloggen.php">Einloggen</a> </li>
                 </ul>
             </li>
         <?php } ?>
@@ -26,7 +27,7 @@
             <li> <span>Abmelden</span>
                 <ul>
                     <!--Link anpassen-->
-                    <li> <a href="/PHP_Bausteine/controller/logout_Controller.php">Abmelden</a> </li>
+                    <li> <a href="abmelden.php">Abmelden</a> </li>
                 </ul>
             </li>
         <?php } ?>

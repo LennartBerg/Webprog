@@ -30,7 +30,19 @@
     max-width: 400px;
     width: 100%;
 }
+.nameOrtDatumBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
 
+.inneresObjekt > span, h3, h5{
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+    min-width: 200px;
+}
 .error {
     color: #D64545;
 }

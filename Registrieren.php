@@ -5,14 +5,14 @@
 $pageTitle = "Registrieren";
 require './PHP_Bausteine/head.php';
 require './PHP_Bausteine/nav.php';
-$form_registrieren = isset($_SESSION['form_registrierung']) ? $_SESSION['form_registrierung'] : [];
+$form_registrieren = $_SESSION['form_registrierung'] ?? [];
 ?>
 <body>
     <div class="main">
 <h1 class="centerPagename"> Registrieren</h1>
     <br>
     <div class="Einloggen">
-        <form method="post" class="Einloggen-Form" action="PHP_Bausteine/controller/Nutzer_Controller/controller-Nutzter-neu.php">
+        <form method="post" class="Einloggen-Form" action="nutzerNeu.php">
             <?php
             if(isset($_SESSION['message'])){
                 $message = $_SESSION['message'];
@@ -64,14 +64,6 @@ $form_registrieren = isset($_SESSION['form_registrierung']) ? $_SESSION['form_re
             <label for="goals">Ausrichtung des Trainings: <br>
                 <input id="goals" type="text" maxlength="50" name="goals" placeholder="Kraft, Ausdauer, Schnelligkeit"
                        value="<?php echo htmlspecialchars($form_registrieren['goals'] ?? ''); ?>">
-            </label>
-            <label for="motivation">Sportliche Ziele: <br>
-                <input id="motivation" type="text" maxlength="50" name="motivation" placeholder="Abnehmen, Muskelaufbau, Spaß"
-                       value="<?php echo htmlspecialchars($form_registrieren['motivation'] ?? ''); ?>">
-            </label>
-            <label for="frequency">Häufigkeit des Trainings:
-                <input id="frequency" type="text" maxlength="50" name="frequency" placeholder="täglich, mehrfach pro Woche, mehrmals im Monat"
-                       value="<?php echo htmlspecialchars($form_registrieren['frequency'] ?? ''); ?>">
             </label>
             <label for="profile_picture">Profilbild:<input type="file" id="profile_picture" name="profile_picture" accept="image/*"></label>
             <button class="button" type="submit"><b>abschicken</b></button>

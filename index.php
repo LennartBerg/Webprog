@@ -2,6 +2,7 @@
 $pageTitle = "Home";
 require_once './vendor/autoload.php';
 
+
 $treffenController = new \PHP_Bausteine\controller\TreffenController();
 $treffen = $treffenController->getAllTreffen();
 ?>
@@ -21,7 +22,26 @@ $treffen = $treffenController->getAllTreffen();
                         <div class="inneresObjekt">
                             <h3><?php echo $treffen->getName(); ?></h3>
                             <h5><?php echo $treffen->getErsteller(); ?></h5>
+                            <span><?php echo $treffen->getOrt(); ?></span>
+                            <div class="nameOrtDatumBox">
+                                <span><?php echo $treffen->getDatum(); ?></span>
+                                <span><?php echo $treffen->getZeit(); ?></span>
+                            </div>
                             <p class="entryText"><?php echo $treffen->getBeschreibung(); ?></p>
+                            <span>
+                                <?php
+                                if(sizeof($treffen -> getTeilnehmer()) > 3){
+                                    foreach (array_splice($treffen -> getTeilnehmer(), 3) as $teilnehmer){
+                                        echo $teilnehmer . ", ";
+                                    }
+                                    echo "und " . (sizeof($treffen -> getTeilnehmer()) - 3) . " weitere";
+                                } else{
+                                    foreach ($treffen -> getTeilnehmer() as $teilnehmer){
+                                        echo $teilnehmer . ", ";
+                                    }
+                                }
+                                ?>
+                            </span>
                             <button class="EntryButton" type="submit"><b>Treffen beitreten</b></button>
                         </div>
                     </div>

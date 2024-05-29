@@ -7,7 +7,6 @@ class Treffen {
     private $datum;
     private $zeit;
     private $beschreibung;
-    private $teilnehmer = array();
     private $ersteller;
 
     function __construct($name, $ort, $datum, $ersteller, $zeit, $beschreibung){
