@@ -8,7 +8,7 @@ class NutzerListeFix implements NutzerListeDAO
     public static function getInstance()
     {
         if (self::$instance == null) {
-            self::$instance = new NutzerListeFix();
+            self::$instance = NutzerListePDOSQLite::getInstance();
         }
         return self::$instance;
     }
