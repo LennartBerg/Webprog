@@ -1,6 +1,5 @@
 <?php
-require_once dirname(__FILE__) . "/Treffen.php";
-require_once dirname(__FILE__) . "/TreffenListePDOSQLite.php";
+namespace PHP_Bausteine\model\TreffenModel;
 
 class TreffenListePDOSQLite implements TreffenListeDAO{
 

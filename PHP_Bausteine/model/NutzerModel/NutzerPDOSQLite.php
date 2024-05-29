@@ -1,11 +1,6 @@
 <?php
 
-if (!isset($abs_path)) {
-    require_once "../../../path.php";
-}
-require_once "Nutzer.php";
-require_once "NutzerListeDAO.php";
-require_once $abs_path . "/db/Connection.php";
+namespace PHP_Bausteine\model\NutzerModel;
 
 class NutzerListePDOSQLite implements NutzerListeDAO
 {

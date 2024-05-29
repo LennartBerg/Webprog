@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-<?php
-$pageTitle = "Home";
-require './PHP_Bausteine/head.php';
-require './PHP_Bausteine/controller/Treffen_Controller/controller-Treffen-alleAnzeigen.php';
-?>
+    <?php require './PHP_Bausteine/head.php'; ?>
     <body>
 <?php
 require './PHP_Bausteine/nav.php';

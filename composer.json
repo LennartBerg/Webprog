@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "PHP_Bausteine\\": "./PHP_Bausteine"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  }
+}

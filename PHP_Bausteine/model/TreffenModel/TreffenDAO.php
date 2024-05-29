@@ -1,11 +1,5 @@
 <?php
-class InternerFehlerTreffenDatenbankException extends Exception
-{
-}
-
-class FehlendesTreffenException extends Exception
-{
-}
+namespace PHP_Bausteine\model\TreffenModel;
 
 interface TreffenListeDAO
 {
