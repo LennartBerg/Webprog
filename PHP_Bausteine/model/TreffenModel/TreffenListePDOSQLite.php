@@ -1,13 +1,32 @@
 <?php
-require_once dirname(__FILE__) . "/Treffen.php";
-require_once dirname(__FILE__) . "/TreffenListePDOSQLite.php";
+namespace PHP_Bausteine\model\TreffenModel;
 
-class TreffenListePDOSQLite implements TreffenListeDAO{
+use PDOException;
+use PHP_Bausteine\Connection;
+
+class TreffenListePDOSQLite implements TreffenDAO {
+
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new TreffenListePDOSQLite();
+        }
+
+        return self::$instance;
+    }
+
+    private Connection $connection;
+
+    public function __construct() {
+        $this->connection = Connection::getInstance();
+    }
 
     public function neuesTreffen($name, $ort, $datum, $ersteller, $zeit, $beschreibung)
     {
         try {
-            $db = new Connection();
+            $db = $this->connection->getDB();
             $sql = "INSERT INTO TreffenListe (name, ort, datum, ersteller, zeit, beschreibung) VALUES (:name, :ort, :ersteller, :zeit, :beschreibung);";
             $command = $db->prepare($sql);
             if (!$command) {
@@ -25,7 +44,7 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
     public function getTreffen($TreffenID)
     {
         try {
-            $db = new Connection();
+            $db = $this->connection->getDB();
             $sql = "SELECT * FROM TreffenListe WHERE id=:id LIMIT 1";
             $command = $db->prepare($sql);
             if (!$command) {
@@ -48,7 +67,7 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
     public function loescheTreffen($TreffenID)
     {
         try {
-            $db = new Connection();
+            $db = $this->connection->getDB();
             $db->beginTransaction();
             $sql = "SELECT * FROM TreffenListe WHERE TreffenID=:TreffenID LIMIT 1";
             $command = $db->prepare($sql);
@@ -91,7 +110,7 @@ class TreffenListePDOSQLite implements TreffenListeDAO{
     public function getAllTreffen()
     {
         try {
-            $db = new Connection();
+            $db = $this->connection->getDB();
             $sql = "SELECT * FROM TreffenListe";
             $command = $db->prepare($sql);
             if (!$command) {

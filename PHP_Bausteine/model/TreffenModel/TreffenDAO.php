@@ -1,13 +1,7 @@
 <?php
-class InternerFehlerTreffenDatenbankException extends Exception
-{
-}
+namespace PHP_Bausteine\model\TreffenModel;
 
-class FehlendesTreffenException extends Exception
-{
-}
-
-interface TreffenListeDAO
+interface TreffenDAO
 {
     public function neuesTreffen($name, $ort, $datum, $ersteller, $zeit, $beschreibung);
 

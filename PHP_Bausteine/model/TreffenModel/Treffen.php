@@ -1,10 +1,7 @@
 <?php
-if (!isset($abs_modelpath)) {
-    require_once "./../modelpath.php";
-}
-require $abs_modelpath . "/NutzerModel/Nutzer.php";
+namespace PHP_Bausteine\model\TreffenModel;
 
-class Treffen{
+class Treffen {
     private $name;
     private $ort;
     private $datum;
