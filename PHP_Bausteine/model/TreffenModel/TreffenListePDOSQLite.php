@@ -4,6 +4,17 @@ require_once dirname(__FILE__) . "/TreffenListePDOSQLite.php";
 
 class TreffenListePDOSQLite implements TreffenListeDAO{
 
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new TreffenListePDOSQLite();
+        }
+
+        return self::$instance;
+    }
+
     public function neuesTreffen($name, $ort, $datum, $ersteller, $zeit, $beschreibung)
     {
         try {
