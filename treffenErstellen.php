@@ -31,6 +31,7 @@ $form_treffen = $_SESSION['form_treffen'] ?? [];
                     <input id="beschreibung" type="text" maxlength="700" name="beschreibung" placeholder="Dies ist die Beschreibung deines Meetings"
                            value="<?php echo htmlspecialchars($form_treffen['beschreibung'] ?? ''); ?>" required>
                 </label>
+                <button class="button" type="submit"><b>veröffentlichen</b></button>
             </form>
         </div>
 <?php
