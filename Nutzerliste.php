@@ -30,8 +30,8 @@ require './PHP_Bausteine/nav.php';
                     <div class="grid-item">2023-03-22</div>
                     <div class="grid-item">3</div>
                     <div class="grid-item">
-                        <button onclick="deleteUser('user2@example.com')">Löschen</button>
-                        <button onclick="viewProfile('user2')">Profil</button>
+                        <button class="Nutzerbutton" onclick="deleteUser('user2@example.com')">Löschen</button>
+                        <button class="Nutzerbutton" onclick="viewProfile('user2')">Profil</button>
                     </div>
 
                 </div>

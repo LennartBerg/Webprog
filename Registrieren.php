@@ -13,6 +13,18 @@ $form_registrieren = isset($_SESSION['form_registrierung']) ? $_SESSION['form_re
     <br>
     <div class="Einloggen">
         <form method="post" class="Einloggen-Form" action="PHP_Bausteine/controller/Nutzer_Controller/controller-Nutzter-neu.php">
+            <?php
+            if(isset($_SESSION['message'])){
+                $message = $_SESSION['message'];
+                if($message == "passwords_not_matching"){
+                    echo "<p class='error'>Die Passwörter stimmen nicht überein</p>";
+                } else if($message == "email, password, name failure"){
+                    echo "<p class='error'>Es wurden nicht alle benötigten Felder ausgefüllt</p>";
+                } else if($message == "internal_error"){
+                    echo "<p class='error'>Es ist ein interner Fehler aufgetreten</p>";
+                }
+            }
+            ?>
             <label for="Email">Email:<br>
                 <input id="Email" type="email" name="email" placeholder="mail@provider.com"
                        value="<?php echo htmlspecialchars($form_registrieren['email'] ?? ''); ?>" required>
@@ -41,63 +53,26 @@ $form_registrieren = isset($_SESSION['form_registrierung']) ? $_SESSION['form_re
                 <input id="weight" type="number" name="weight" placeholder="90" min="0"
                        value="<?php echo htmlspecialchars($form_registrieren['weight'] ?? ''); ?>">
             </label>
-            <p>Trainingsort:<br>
-                <label class="registerLabel" for="trainingLocation"> Oldenburg
-                <input class="registerInput" type="checkbox" id="trainingLocation" name="Oldenburg" value="Oldenburg" <?php echo (isset($form_registrieren['trainingLocation']) && $form_registrieren['trainingLocation'] == 'Oldenburg') ? 'checked' : ''; ?>>
-                </label><br>
-                <label class="registerLabel" for="trainingLocation"> Bremen
-                <input class="registerInput" type="checkbox" id="trainingLocation" name="Bremen" value="Bremen" <?php echo (isset($form_registrieren['trainingLocation']) && $form_registrieren['trainingLocation'] == 'Bremen') ? 'checked' : ''; ?>>
-                </label><br>
-                <label class="registerLabel" for="trainingLocation"> Hamburg
-                <input class="registerInput" type="checkbox" id="trainingLocation" name="Hamburg" value="Hamburg" <?php echo (isset($form_registrieren['trainingLocation']) && $form_registrieren['trainingLocation'] == 'Hamburg') ? 'checked' : ''; ?>>
-                </label><br>
-            </p>
-            <p>Sportarten:<br>
-                <label class="registerLabel" for="weightlifting"> Kraftsport
-                <input class="registerInput" type="checkbox" id="sportstypes" name="weightlifting" value="weightlifting" <?php echo (isset($form_registrieren['sportstypes']) && in_array('weightlifting', $form_registrieren['sportstypes'])) ? 'checked' : ''; ?>>
-                </label><br>
-                <label class="registerLabel" for="teamsports"> Teamsportart
-                <input class="registerInput" type="checkbox" id="sportstypes" name="teamsports" value="teamsports" <?php echo (isset($form_registrieren['sportstypes']) && in_array('teamsports', $form_registrieren['sportstypes'])) ? 'checked' : ''; ?>>
-                </label><br>
-                <label class="registerLabel" for="individualsports"> Einzelsportart
-                <input class="registerInput" type="checkbox" id="sportstypes" name="individualsports" value="individualsports" <?php echo (isset($form_registrieren['sportstypes']) && in_array('individualsports', $form_registrieren['sportstypes'])) ? 'checked' : ''; ?>>
-                </label><br>
-            </p>
-            <p>
-            Ausrichtung des Trainings:<br>
-                    <label class="registerLabel" for="gain"> Muskelaufbau
-                    <input class="registerInput" type="checkbox" id="goals" name="gain" value="gain" <?php echo (isset($form_registrieren['goals']) && $form_registrieren['goals'] == 'gain') ? 'checked' : ''; ?>>
-                    </label><br>
-                    <label class="registerLabel" for="hold"> Muskelerhalt
-                    <input class="registerInput" type="checkbox" id="goals" name="hold" value="hold" <?php echo (isset($form_registrieren['goals']) && $form_registrieren['goals'] == 'hold') ? 'checked' : ''; ?>>
-                    </label><br>
-                    <label class="registerLabel" for="lose"> Fettabbau
-                    <input class="registerInput" type="checkbox" id="goals" name="lose" value="lose" <?php echo (isset($form_registrieren['goals']) && $form_registrieren['goals'] == 'lose') ? 'checked' : ''; ?>>
-                    </label><br>
-            </p>
-            <p>Sportliche Ziele:<br>
-                <label class="registerLabel" for="reha"> Reha
-                    <input class="registerInput" type="checkbox" id="motivation" name="reha" value="reha" <?php echo (isset($form_registrieren['motivation']) && $form_registrieren['motivation'] == 'reha') ? 'checked' : ''; ?>>
-                   </label><br>
-                <label class="registerLabel" for="competition"> Wettkampf
-                    <input class="registerInput" type="checkbox" id="motivation" name="competition" value="competition" <?php echo (isset($form_registrieren['motivation']) && $form_registrieren['motivation'] == 'competition') ? 'checked' : ''; ?>>
-                    </label><br>
-                <label class="registerLabel" for="fun"> Freude am Sport
-                    <input class="registerInput" type="checkbox" id="motivation" name="fun" value="fun" <?php echo (isset($form_registrieren['motivation']) && $form_registrieren['motivation'] == 'fun') ? 'checked' : ''; ?>>
-                    </label><br>
-            </p>
-            <p>
-            Häufigkeit des Trainings:<br>
-                <label class="registerLabel" for="daily"> täglich
-                    <input class="registerInput" type="checkbox" id="frequency" name="daily" value="daily" <?php echo (isset($form_registrieren['frequency']) && $form_registrieren['frequency'] == 'daily') ? 'checked' : ''; ?>>
-                    </label><br>
-                <label class="registerLabel" for="multipleperweek"> mehrfach pro Woche
-                    <input class="registerInput" type="checkbox" id="frequency" name="multipleperweek" value="multipleperweek" <?php echo (isset($form_registrieren['frequency']) && $form_registrieren['frequency'] == 'multipleperweek') ? 'checked' : ''; ?>>
-                    </label><br>
-                <label class="registerLabel" for="weekly"> mehrmals im Monat
-                    <input class="registerInput" type="checkbox" id="frequency" name="weekly" value="weekly" <?php echo (isset($form_registrieren['frequency']) && $form_registrieren['frequency'] == 'weekly') ? 'checked' : ''; ?>>
-                   </label><br>
-            </p>
+            <label for="trainingLocation">Trainingsort:<br>
+                <input id="trainingLocation" type="text" maxlength="50" name="trainingLocation" placeholder="Oldenburg"
+                       value="<?php echo htmlspecialchars($form_registrieren['trainingLocation'] ?? ''); ?>">
+            </label>
+            <label for="sportstypes">Sportart(-en): <br>
+                <input id="sportstypes" type="text" maxlength="70" name="sportstypes" placeholder="Fußball, Tennis, Schwimmen, Krafttraining"
+                       value="<?php echo htmlspecialchars($form_registrieren['sportstypes'] ?? ''); ?>">
+            </label>
+            <label for="goals">Ausrichtung des Trainings: <br>
+                <input id="goals" type="text" maxlength="50" name="goals" placeholder="Kraft, Ausdauer, Schnelligkeit"
+                       value="<?php echo htmlspecialchars($form_registrieren['goals'] ?? ''); ?>">
+            </label>
+            <label for="motivation">Sportliche Ziele: <br>
+                <input id="motivation" type="text" maxlength="50" name="motivation" placeholder="Abnehmen, Muskelaufbau, Spaß"
+                       value="<?php echo htmlspecialchars($form_registrieren['motivation'] ?? ''); ?>">
+            </label>
+            <label for="frequency">Häufigkeit des Trainings:
+                <input id="frequency" type="text" maxlength="50" name="frequency" placeholder="täglich, mehrfach pro Woche, mehrmals im Monat"
+                       value="<?php echo htmlspecialchars($form_registrieren['frequency'] ?? ''); ?>">
+            </label>
             <label for="profile_picture">Profilbild:<input type="file" id="profile_picture" name="profile_picture" accept="image/*"></label>
             <button class="button" type="submit"><b>abschicken</b></button>
         </form>

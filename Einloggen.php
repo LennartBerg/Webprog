@@ -12,7 +12,18 @@ require './PHP_Bausteine/nav.php';
 <div class="main">
 <h1 class="centerPagename">Einloggen</h1>
 <div class="Einloggen">
-    <form class="Einloggen-Form" method="post">
+
+    <form class="Einloggen-Form" action="PHP_Bausteine/controller/Nutzer_Controller/login_controller.php" method="post">
+        <?php
+        if(isset($_SESSION['message'])){
+            $message = $_SESSION['message'];
+            if($message == "login_failure"){
+                echo "<p class='error'>Die Email oder das Passwort ist falsch</p>";
+            } else if($message == "internal_error") {
+                echo "<p class='error'>Es ist ein interner Fehler aufgetreten</p>";
+            }
+        }
+        ?>
         <label for="loginUsername">Email:
             <input type="email" id="loginUsername" name="name" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
         </label>
