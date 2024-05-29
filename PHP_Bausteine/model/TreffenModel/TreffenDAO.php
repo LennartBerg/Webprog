@@ -1,7 +1,7 @@
 <?php
 namespace PHP_Bausteine\model\TreffenModel;
 
-interface TreffenListeDAO
+interface TreffenDAO
 {
     public function neuesTreffen($name, $ort, $datum, $ersteller, $zeit, $beschreibung);
 

@@ -57,7 +57,7 @@ class Connection {
 
     function checkTables()
     {
-        try {
+        //try {
 
             $tableName = 'NutzerListe';
 
@@ -80,9 +80,9 @@ class Connection {
             if (!$stmt->fetch()) {
                 $this->buildTreffenTable();
             }
-        } catch (PDOException $e) {
-            echo "Fehler beim Verbinden mit der Datenbank: " . $e->getMessage();
-        }
+        //} catch (PDOException $e) {
+        //    echo "Fehler beim Verbinden mit der Datenbank: " . $e->getMessage();
+        //}
     }
 
     function buildNutzerTable()
@@ -109,7 +109,7 @@ class Connection {
 
     function buildTreffenTable()
     {
-        $this->exec("
+        $this->db->exec("
                 CREATE TABLE TreffenListe (
                     TreffenID INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT UNIQUE NOT NULL,
@@ -118,11 +118,11 @@ class Connection {
                     zeit TIME,
                     beschreibung TEXT,
                     teilnehmer TEXT,
-                    ersteller NutzerID,
+                    ersteller NutzerID
                 );
             ");
 
-        $this->exec("
+        $this->db->exec("
                 INSERT INTO TreffenListe (name, ort, datum, zeit, beschreibung, teilnehmer, ersteller) VALUES
                 ('Test Treffen 1', 'Berlin', '2020-01-01', '12:00', 'Test Treffen 1 Beschreibung', '1', '1');");
     }
