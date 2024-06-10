@@ -2,5 +2,5 @@
 require_once './vendor/autoload.php';
 
 $treffenController = new \PHP_Bausteine\controller\TreffenController();
-$treffenController->treffenNeu();
+$treffenController->createTreffen();
 

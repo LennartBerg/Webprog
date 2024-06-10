@@ -20,16 +20,19 @@ $treffen = $treffenController->getAllTreffen();
                 <?php foreach ($treffen as $treffen): ?>
                     <div class="Objekt">
                         <div class="inneresObjekt">
-                            <h3><?php echo $treffen->getName(); ?></h3>
-                            <h5><?php echo $treffen->getErsteller(); ?></h5>
-                            <span><?php echo $treffen->getOrt(); ?></span>
+                            <h3><?php echo $treffen->getName() ?? 'Treffen'; ?></h3>
+                            <h5><?php echo $treffen->getErsteller() ?? 'Hier gibt es einen Anonymen Ersteller'; ?></h5>
+                            <span><?php echo $treffen->getOrt() ?? ''; ?></span>
                             <div class="nameOrtDatumBox">
-                                <span><?php echo $treffen->getDatum(); ?></span>
-                                <span><?php echo $treffen->getZeit(); ?></span>
+                                <span><?php echo $treffen->getDatum() ?? ''; ?></span>
+                                <span><?php echo $treffen->getZeit() ?? ''; ?></span>
                             </div>
-                            <p class="entryText"><?php echo $treffen->getBeschreibung(); ?></p>
+                            <p class="entryText"><?php echo $treffen->getBeschreibung() ?? ''; ?></p>
                             <span>
                                 <?php
+                                if ($treffen -> getTeilnehmer()  == null){
+                                    echo "Bisher keine Teilnehmer";
+                                }
                                 if(sizeof($treffen -> getTeilnehmer()) > 3){
                                     foreach (array_splice($treffen -> getTeilnehmer(), 3) as $teilnehmer){
                                         echo $teilnehmer . ", ";

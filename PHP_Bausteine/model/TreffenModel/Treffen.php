@@ -15,6 +15,7 @@ class Treffen {
         $this->datum = $datum;
         $this->ersteller = $ersteller;
         $this->zeit = $zeit;
+        $this->teilnehmer = [];
         $this->beschreibung = $beschreibung;
     }
 
