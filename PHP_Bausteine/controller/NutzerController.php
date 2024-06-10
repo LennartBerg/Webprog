@@ -129,6 +129,7 @@ class NutzerController extends BaseController {
                         $_SESSION["email"] = $nutzer -> getEmail();
                         $_SESSION["id"] = $nutzer -> getID();
                         $_SESSION["message"] = "login_successful";
+                        $_SESSION["isLoggedIn"] = true;
                         $this->redirect("Profil.php");
                     }
                 }
