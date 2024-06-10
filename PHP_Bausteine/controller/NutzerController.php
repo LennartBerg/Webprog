@@ -30,13 +30,14 @@ class NutzerController extends BaseController {
             $this->redirect("Registrieren.php");
         } else {
             $password = $password1;
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         }
         if(!isset($_POST[$email]) || !isset($_POST[$password1]) || !isset($_POST[$name])){
             $_SESSION["message"] = "email, password, name failure";
             $this->redirect("Registrieren.php");
         }
         try{
-            NutzerListe::getInstance()->neuerNutzer($email,$password,$name,$birthdate,$height,$weight,$trainingLocation,$height,$goals);
+            NutzerListe::getInstance()->neuerNutzer($email,$hashed_password,$name,$birthdate,$height,$weight,$trainingLocation,$height,$goals);
         } catch (InternerFehlerNutzerDatenbankException $exc){
             $this->redirect("index.php");
         }
@@ -121,7 +122,8 @@ class NutzerController extends BaseController {
         $allNutzer = NutzerListe::getInstance() -> getAllNutzer();
         foreach ($allNutzer as $nutzer){
             if($nutzer -> getEmail() == $email){
-                if($nutzer -> getPassword() == $password){
+                $hashedpwd = $nutzer -> getPassword();
+                if(password_verify($hashedpwd, $password)){
                     if($name = $nutzer -> getName()){
                         $_SESSION["name"] = $name;
                         $_SESSION["email"] = $nutzer -> getEmail();

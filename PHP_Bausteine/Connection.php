@@ -91,8 +91,8 @@ class Connection {
                 CREATE TABLE NutzerListe (
                     NutzerID INTEGER PRIMARY KEY AUTOINCREMENT,
                     email TEXT UNIQUE NOT NULL, /* UNIQUE NOT NULL macht den quatsch zum Primär-Key*/
-                    password TEXT,
-                    name UNiQUE NOT NULL, 
+                    password TEXT NOT NULL,
+                    name TEXT UNiQUE NOT NULL, 
                     birthdate TEXT,
                     height INTEGER,
                     weight INTEGER,
