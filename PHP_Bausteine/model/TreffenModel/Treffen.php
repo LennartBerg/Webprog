@@ -8,6 +8,7 @@ class Treffen {
     private $zeit;
     private $beschreibung;
     private $ersteller;
+    private $teilnehmer;
 
     function __construct($name, $ort, $datum, $ersteller, $zeit, $beschreibung){
         $this->name = $name;
@@ -15,7 +16,7 @@ class Treffen {
         $this->datum = $datum;
         $this->ersteller = $ersteller;
         $this->zeit = $zeit;
-        $this->teilnehmer = [];
+        $this->teilnehmer = array();
         $this->beschreibung = $beschreibung;
     }
 
