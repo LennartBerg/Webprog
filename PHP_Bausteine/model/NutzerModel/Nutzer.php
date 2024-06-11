@@ -7,23 +7,12 @@ class Nutzer{
     private $email;
     private $password;
     private $name;
-    private $birthdate;
-    private $height;
-    private $weight;
-    private $trainingLocation;
-    private $sportstypes;
-    private $goals;
+
 
     public function __construct($email, $password, $name, $birthdate, $height, $weight, $trainingLocation, $sportstypes, $goals){
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
-        $this->setBirthdate($birthdate);
-        $this->setHeight($height);
-        $this->setWeight($weight);
-        $this->setTrainingLocation($trainingLocation);
-        $this->setSportstypes($sportstypes);
-        $this->setGoals($goals);
     }
 
     public function getEmail(){

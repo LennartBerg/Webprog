@@ -28,7 +28,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
 
 
 
-    public function neuerNutzer($email, $password, $name, $birthdate, $height, $weight, $trainingsLocation, $sportstypes, $goals)
+    public function neuerNutzer($email, $password, $name)
     {
         try {
             $db = $this->connection->getDB();
@@ -37,7 +37,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
             if (!$command) {
                 throw new InternerFehlerException();
             }
-            if (!$command->execute([":email" => $email, ":password" => $password,":name" => $name, ":birthdate" => $birthdate, ":height" => $height, ":weight" => $weight, ":trainingLocation" => $trainingsLocation, ":sportstypes" => $sportstypes, ":goals" => $goals])) {
+            if (!$command->execute([":email" => $email, ":password" => $password,":name" => $name])) {
                 throw new InternerFehlerException();
             }
             return intval($db->lastInsertId());}

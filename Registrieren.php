@@ -41,29 +41,6 @@ $form_registrieren = $_SESSION['form_registrierung'] ?? [];
                 <input id="Name" type="text" name="Name" placeholder="Mustermann"
                        value="<?php echo htmlspecialchars($form_registrieren['Name'] ?? ''); ?>">
             </label>
-            <label for="birthdate">Geburtstag:<br>
-                <input id="birthdate" type="date" name="birthdate"
-                       value="<?php echo htmlspecialchars($form_registrieren['birthdate'] ?? ''); ?>">
-            </label>
-            <label for="height">Größe in cm:<br>
-                <input id="height" type="number" name="height" placeholder="180" min="0"
-                       value="<?php echo htmlspecialchars($form_registrieren['height'] ?? ''); ?>">
-            </label>
-            <label for="weight">Gewicht in kg:<br>
-                <input id="weight" type="number" name="weight" placeholder="90" min="0"
-                       value="<?php echo htmlspecialchars($form_registrieren['weight'] ?? ''); ?>">
-            </label>
-            <label for="trainingLocation">Trainingsort:<br>
-                <input id="trainingLocation" type="text" maxlength="50" name="trainingLocation" placeholder="Oldenburg"
-                       value="<?php echo htmlspecialchars($form_registrieren['trainingLocation'] ?? ''); ?>">
-            </label>
-            <label for="sportstypes">Sportart(-en): <br>
-                <input id="sportstypes" type="text" maxlength="70" name="sportstypes" placeholder="Fußball, Tennis, Schwimmen, Krafttraining"
-                       value="<?php echo htmlspecialchars($form_registrieren['sportstypes'] ?? ''); ?>">
-            </label>
-            <label for="goals">Ausrichtung des Trainings: <br>
-                <input id="goals" type="text" maxlength="50" name="goals" placeholder="Kraft, Ausdauer, Schnelligkeit"
-                       value="<?php echo htmlspecialchars($form_registrieren['goals'] ?? ''); ?>">
             </label>
             <label for="profile_picture">Profilbild:<input type="file" id="profile_picture" name="profile_picture" accept="image/*"></label>
             <button class="button" type="submit"><b>abschicken</b></button>
