@@ -42,7 +42,6 @@
             dropdownContent.classList.toggle('show');
         });
 
-        // Schließen Sie das Dropdown-Menü, wenn außerhalb geklickt wird
         window.onclick = function(event) {
             if (!event.target.matches('.dropdown')) {
                 if (dropdownContent.classList.contains('show')) {
