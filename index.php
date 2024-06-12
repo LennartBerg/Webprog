@@ -45,7 +45,10 @@ $treffen = $treffenController->getAllTreffen();
                                 }
                                 ?>
                             </span>
-                            <button class="EntryButton" type="submit"><b>Treffen beitreten</b></button>
+                            <form method="post" action="treffenBeitreten.php">
+                                <input type="hidden" name="TreffenID" value="<?php echo $treffen->getTreffenID(); ?>">
+                                <button class="EntryButton" type="submit"><b>Treffen beitreten</b></button>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>

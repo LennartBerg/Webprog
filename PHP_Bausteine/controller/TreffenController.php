@@ -2,6 +2,7 @@
 namespace PHP_Bausteine\controller;
 
 use PHP_Bausteine\model\TreffenModel\TreffenListe;
+use PHP_Bausteine\model\NutzerModel\NutzerListe;
 
 class TreffenController{
 
@@ -110,5 +111,16 @@ class TreffenController{
         unset($_POST["datum"]);
         unset($_POST["zeit"]);
         unset($_POST["beschreibung"]);
+    }
+
+    function beitreten(){
+        if(!$_SESSION["isLoggedIn"]){
+            $_SESSION["message"] = "Sie sind nicht eingeloggt";
+            header("Location: ./Einloggen.php");
+            exit;
+        }
+        $TreffenID = $_POST[htmlspecialchars("TreffenID")];
+        $NutzerID = $_SESSION["NutzerID"];
+        TreffenListe::getInstance() ->  beitreten($TreffenID, $NutzerID);
     }
 }
