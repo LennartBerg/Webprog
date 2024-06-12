@@ -131,4 +131,18 @@ class TreffenListePDOSQLite implements TreffenDAO {
             throw new InternerFehlerException();
         }
     }
+
+    public function treffenBeitreten($TreffenID, $NutzerID)
+    {
+        $db = $this->connection->getDB();
+        $sql = "INSERT INTO TreffenTeilnehmer (TreffenID, NutzerID) VALUES (:TreffenID, :NutzerID);";
+        $command = $db->prepare($sql);
+        if(!$command) {
+            throw new InternerFehlerException();
+        }
+        if(!$command->execute([":TreffenID" => $TreffenID, ":NutzerID" => $NutzerID])) {
+            throw new InternerFehlerException();
+        }
+        return intval($db->lastInsertId());
+    }
 }

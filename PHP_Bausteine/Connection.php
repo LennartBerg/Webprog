@@ -117,13 +117,12 @@ class Connection {
                     datum DATE,
                     zeit TIME,
                     beschreibung TEXT,
-                    teilnehmer TEXT,
                     ersteller NutzerID
                 );
             ");
 
         $this->db->exec("
-                INSERT INTO TreffenListe (name, ort, datum, zeit, beschreibung, teilnehmer, ersteller) VALUES
+                INSERT INTO TreffenListe (name, ort, datum, zeit, beschreibung, ersteller) VALUES
                 ('Test Treffen 1', 'Berlin', '2020-01-01', '12:00', 'Test Treffen 1 Beschreibung', '1', '1');");
     }
 
@@ -132,5 +131,20 @@ class Connection {
         $this->db->exec("
             DELETE FROM TreffenListe WHERE datum < date('now') AND zeit < time('now');
         ");
+    }
+
+    function buildTeilnehmerBeiTreffenTable()
+    {
+        $this->db->exec("
+                CREATE TABLE IF NOT EXISTS TeilnehmerBeiTreffen (
+                    TreffenID INTEGER,
+                    NutzerID INTEGER,
+                    BeigetretenID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    UNIQUE (TreffenID, NutzerID),
+                    PRIMARY KEY (TreffenID, NutzerID),
+                    FOREIGN KEY (TreffenID) REFERENCES TreffenListe(TreffenID),
+                    FOREIGN KEY (NutzerID) REFERENCES NutzerListe(NutzerID)
+                );
+            ");
     }
 }
