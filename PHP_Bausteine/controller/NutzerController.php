@@ -1,11 +1,12 @@
 <?php
 namespace PHP_Bausteine\controller;
-
+require 'BaseController.php';
 use PHP_Bausteine\model\NutzerModel\FehlenderNutzerException;
 use PHP_Bausteine\model\NutzerModel\NutzerListe;
 use PHP_Bausteine\InternerFehlerDatenbankException;
 use PHP_Bausteine\InternerFehlerException;
-use PHP_Bausteine\controller\TreffenController;
+use PHP_Bausteine\InternerFehlerNutzerDatenbankException;
+
 
 class NutzerController extends BaseController {
 
@@ -56,7 +57,7 @@ class NutzerController extends BaseController {
         try{
             NutzerListe::getInstance() ->  loescheNutzer($NutzerID);
             exit;
-        } catch (InternerFehlerInNutzerDatenbankException $exc){
+        } catch (InternerFehlerNutzerDatenbankException $exc){
             $_SESSION["message"] = "internal_error";
             $this->redirect("index.php");
         }
@@ -137,15 +138,20 @@ class NutzerController extends BaseController {
 
     public function beigetreteneTreffenNutzer()
     {
-        $NutzerID = $_SESSION["id"];
-        try {
-            $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
-            $beigetreteneTreffen = $Nutzer -> getBeigetreteneTreffen($NutzerID);
-        }catch (FehlenderNutzerException){
-            $_SESSION["message"] = "invalid_nutzer_id";
-            $this->redirect("index.php");
+        if($_SESSION["id"] == null){
+            $NutzerID = null;
+            return;
+        }else {
+            $NutzerID = $_SESSION["id"];
+            try {
+                $Nutzer = NutzerListe::getInstance()->getNutzer($NutzerID);
+                $beigetreteneTreffen = $Nutzer->getBeigetreteneTreffen($NutzerID);
+            } catch (FehlenderNutzerException) {
+                $_SESSION["message"] = "invalid_nutzer_id";
+                $this->redirect("index.php");
+            }
+            return $beigetreteneTreffen;
         }
-        return $beigetreteneTreffen;
     }
 
     public function erstellteTreffenNutzer()
