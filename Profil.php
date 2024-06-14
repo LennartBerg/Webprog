@@ -7,7 +7,8 @@ require './PHP_Bausteine/PHP_Bausteine\controller\NutzerController.php';
 require './PHP_Bausteine\controller\TreffenController.php';
 $nutzerController = new \PHP_Bausteine\controller\NutzerController();
 $treffenController = new \PHP_Bausteine\controller\TreffenController();
-//TODO: getBeigetreteneTreffen() und getErstellteTreffen() in GUI einfügen @Bennart Lerg, hoffe, dass die Controller so funktionieren ansonsten fragen, hab ums verrecken versucht SQL zu vermeiden ....
+//TODO: getBeigetreteneTreffen() und getErstellteTreffen() in GUI einfügen @Bennart Lerg, hoffe, dass die Controller so funktionieren ansonsten fragen, hab ums verrecken versucht SQL zu vermeiden ....,
+// können danach auch direkt die UpdateTreffen und DeleteTreffen Funktionen implementieren Inshallah
 $beigetreteneTreffen = $nutzerController->getBeigetreteneTreffen();
 $erstellteTreffen = $nutzerController->getErstellteTreffen();
 ?>
