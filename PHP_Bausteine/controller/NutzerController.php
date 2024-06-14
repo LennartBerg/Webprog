@@ -2,10 +2,10 @@
 namespace PHP_Bausteine\controller;
 require 'BaseController.php';
 use PHP_Bausteine\model\NutzerModel\FehlenderNutzerException;
-use PHP_Bausteine\model\NutzerModel\NutzerListe;
 use PHP_Bausteine\InternerFehlerDatenbankException;
 use PHP_Bausteine\InternerFehlerException;
 use PHP_Bausteine\InternerFehlerNutzerDatenbankException;
+use PHP_Bausteine\model\NutzerModel\NutzerListe;
 
 
 class NutzerController extends BaseController {
@@ -139,7 +139,6 @@ class NutzerController extends BaseController {
     public function beigetreteneTreffenNutzer()
     {
         if($_SESSION["id"] == null){
-            $NutzerID = null;
             return;
         }else {
             $NutzerID = $_SESSION["id"];
@@ -156,10 +155,13 @@ class NutzerController extends BaseController {
 
     public function erstellteTreffenNutzer()
     {
+        if($_SESSION["id"] == null){
+            return;
+        }
         $NutzerID = $_SESSION["id"];
+
         try{
-            $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
-            $erstellteTreffen = $Nutzer -> getErstellteTreffen($NutzerID);
+            $erstellteTreffen = NutzerListe::getInstance() -> getErstellteTreffen($NutzerID);
         } catch (FehlenderNutzerException){
             $_SESSION["message"] = "invalid_nutzer_id";
             $this->redirect("index.php");
