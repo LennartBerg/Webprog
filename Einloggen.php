@@ -25,7 +25,7 @@ require './PHP_Bausteine/nav.php';
         }
         ?>
         <label for="loginUsername">Email:
-            <input type="email" id="loginUsername" name="email" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
+            <input type="email" id="loginUsername" name="name" required placeholder="mail@provider.com" value="<?php echo htmlspecialchars($form_einloggen['loginUsername'] ?? ''); ?>">
         </label>
         <label for="loginPassword">Passwort:
             <input type="password" id="loginPassword" name="password" placeholder="Passwort" required  >
