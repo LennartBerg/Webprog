@@ -39,7 +39,7 @@ class NutzerController extends BaseController {
         } catch (InternerFehlerNutzerDatenbankException $exc){
             $this->redirect("index.php");
         }
-
+        $_SESSION['isLoggedIn'] = true;
         unset($_POST["email"]);
         unset($_POST["password1"]);
         unset($_POST["password2"]);
