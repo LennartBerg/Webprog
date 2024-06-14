@@ -1,6 +1,7 @@
 <?php
 namespace PHP_Bausteine\controller;
 
+use PHP_Bausteine\model\NutzerModel\FehlenderNutzerException;
 use PHP_Bausteine\model\NutzerModel\NutzerListe;
 use PHP_Bausteine\InternerFehlerDatenbankException;
 use PHP_Bausteine\InternerFehlerException;
@@ -137,38 +138,41 @@ class NutzerController extends BaseController {
     public function beigetreteneTreffenNutzer()
     {
         $NutzerID = $_SESSION["id"];
-        $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
-        $beigetreteneTreffen = $Nutzer -> getBeigetreteneTreffen($NutzerID);
-        $TreffenController = new TreffenController();
-        $alleTreffen = $TreffenController -> getAllTreffen();
-        $beigetreteneTreffenInstanzen = array();
-        for ($i = 0; $i < sizeof($beigetreteneTreffen); $i++){
-            for($j = 0; $j < sizeof($alleTreffen); $j++){
-                if($beigetreteneTreffen[$i] == $alleTreffen[$j]){
-                    array_push($beigetreteneTreffenInstanzen, $alleTreffen[$j]);
-                }
-            }
+        try {
+            $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
+            $beigetreteneTreffen = $Nutzer -> getBeigetreteneTreffen($NutzerID);
+        }catch (FehlenderNutzerException){
+            $_SESSION["message"] = "invalid_nutzer_id";
+            $this->redirect("index.php");
         }
-        return $beigetreteneTreffenInstanzen;
+        return $beigetreteneTreffen;
     }
 
     public function erstellteTreffenNutzer()
     {
         $NutzerID = $_SESSION["id"];
-        $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
-        $erstellteTreffen = $Nutzer -> getErstellteTreffen($NutzerID);
-        $TreffenController = new TreffenController();
-        $alleTreffen = $TreffenController -> getAllTreffen();
-        $erstellteTreffenInstanzen = array();
-
-        for ($i = 0; $i < sizeof($erstellteTreffen); $i++){
-            for($j = 0; $j < sizeof($alleTreffen); $j++){
-                if($erstellteTreffen[$i] == $alleTreffen[$j]){
-                    array_push($erstellteTreffenInstanzen, $alleTreffen[$j]);
-                }
-            }
+        try{
+            $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
+            $erstellteTreffen = $Nutzer -> getErstellteTreffen($NutzerID);
+        } catch (FehlenderNutzerException){
+            $_SESSION["message"] = "invalid_nutzer_id";
+            $this->redirect("index.php");
         }
-        return $erstellteTreffenInstanzen;
+        return $erstellteTreffen;
+    }
+
+    public function leavingTreffen()
+    {
+        $NutzerID = $_SESSION["id"];
+        $TreffenID = $_POST["TreffenID"];
+        try{
+            NutzerListe::getInstance() -> leaveTreffen($TreffenID, $NutzerID);
+        } catch (FehlenderNutzerException){
+            $_SESSION["message"] = "invalid_nutzer_id";
+            $this->redirect("index.php");
+        }
+        unset($_POST["TreffenID"]);
+        $this->redirect("Profil.php");
     }
 
 }

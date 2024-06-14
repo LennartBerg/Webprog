@@ -8,7 +8,8 @@ require './PHP_Bausteine\controller\TreffenController.php';
 $nutzerController = new \PHP_Bausteine\controller\NutzerController();
 $treffenController = new \PHP_Bausteine\controller\TreffenController();
 //TODO: getBeigetreteneTreffen() und getErstellteTreffen() in GUI einfügen @Bennart Lerg, hoffe, dass die Controller so funktionieren ansonsten fragen, hab ums verrecken versucht SQL zu vermeiden ....,
-// können danach auch direkt die UpdateTreffen und DeleteTreffen Funktionen implementieren Inshallah, also HTML/CSS direkt mit diesen Buttons um Funktionen zu verknüpfen
+// können danach auch direkt die UpdateTreffen und DeleteTreffen Funktionen implementieren Inshallah, also HTML/CSS direkt mit diesen Buttons um Funktionen zu verknüpfen,
+// am besten wäre es, wenn der Nutzer an den eigens erstellen treffen für jedes Eingabefeld einen "Stift Button" hat, sodass der veränderte Parameter so identifiziert wird
 $beigetreteneTreffen = $nutzerController->getBeigetreteneTreffen();
 $erstellteTreffen = $nutzerController->getErstellteTreffen();
 ?>

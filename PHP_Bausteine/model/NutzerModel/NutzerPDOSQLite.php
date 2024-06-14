@@ -139,47 +139,85 @@ class NutzerPDOSQLite implements NutzerListeDAO
 
     function getBeigetreteneTreffen($NutzerID)
     {
-        try{
+        try {
             $db = $this->connection->getDB();
-            $sql = "SELECT TreffenID FROM TeilnehmerBeiTreffen WHERE NutzerID=:$NutzerID";
+            $sql = "SELECT TreffenID FROM TeilnehmerBeiTreffen WHERE NutzerID=:NutzerID";
             $command = $db->prepare($sql);
-            if(!$command){
+            if (!$command) {
                 throw new InternerFehlerException();
             }
-            if (!$command->execute()){
+            $command->bindParam(':NutzerID', $NutzerID, PDO::PARAM_INT);
+            if (!$command->execute()) {
                 throw new InternerFehlerException();
             }
             $result = $command->fetchAll();
             $entries = [];
-            foreach($result as $row){
-                $entry = $row["TreffenID"];
-                array_push($entries, $entry);
+            foreach ($result as $row) {
+                $entries[] = $row["TreffenID"];
             }
             return $entries;
-        }catch(InternerFehlerException $exc){
-            throw new InternerFehlerException();
+        } catch (InternerFehlerException $exc) {
+            // Fehlerbehandlung hier
         }
     }
 
+
     function getErstellteTreffen($NutzerID)
     {
-        try{
+        try {
             $db = $this->connection->getDB();
-            $sql = "SELECT TreffenID FROM TreffenListe WHERE ersteller=:$NutzerID";
+            $sql = "SELECT TreffenID, ort, datum, zeit, beschreibung FROM TreffenListe WHERE ersteller=:NutzerID";
             $command = $db->prepare($sql);
-            if(!$command){
+            if (!$command) {
                 throw new InternerFehlerException();
             }
-            if(!$command->execute()){
+            $command->bindParam(':NutzerID', $NutzerID, PDO::PARAM_INT);
+            if (!$command->execute()) {
                 throw new InternerFehlerException();
             }
             $result = $command->fetchAll();
             $entries = [];
-            foreach($result as $row){
-                $entry = new Treffen($row["TreffenID"], $row["ort"], $row["datum"], $row["ersteller"], $row["zeit"], $row["beschreibung"]);
+            foreach ($result as $row) {
+                $entry = new Treffen($row["TreffenID"], $row["ort"], $row["datum"], $NutzerID, $row["zeit"], $row["beschreibung"]);
                 array_push($entries, $entry);
             }
             return $entries;
-        } catch(InternerFehlerDatenbankException $exc){}
+        } catch (InternerFehlerDatenbankException $exc) {
+            // Fehlerbehandlung hier
+        }
     }
+
+    function leaveTreffen($TreffenID, $NutzerID)
+    {
+        try {
+            $db = $this->connection->getDB();
+
+            $checkSql = "SELECT * FROM TeilnehmerBeiTreffen WHERE TreffenID = :TreffenID AND NutzerID = :NutzerID";
+            $checkCommand = $db->prepare($checkSql);
+            $checkCommand->bindParam(':TreffenID', $TreffenID, PDO::PARAM_INT);
+            $checkCommand->bindParam(':NutzerID', $NutzerID, PDO::PARAM_INT);
+            $checkCommand->execute();
+            $result = $checkCommand->fetch();
+
+            if ($result) {
+                // Nutzer ist dem Treffen beigetreten, entfernen
+                $deleteSql = "DELETE FROM TeilnehmerBeiTreffen WHERE TreffenID = :TreffenID AND NutzerID = :NutzerID";
+                $deleteCommand = $db->prepare($deleteSql);
+                $deleteCommand->bindParam(':TreffenID', $TreffenID, PDO::PARAM_INT);
+                $deleteCommand->bindParam(':NutzerID', $NutzerID, PDO::PARAM_INT);
+
+                if (!$deleteCommand->execute()) {
+                    throw new InternerFehlerException();
+                }
+                return true;
+            } else {
+                // Nutzer ist dem Treffen nicht beigetreten
+                throw new InternerFehlerException("Nutzer ist dem Treffen nicht beigetreten.");
+            }
+        } catch (InternerFehlerDatenbankException $exc) {
+            // Fehlerbehandlung hier
+        }
+    }
+
+
 }
