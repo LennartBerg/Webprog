@@ -7,12 +7,16 @@ class Nutzer{
     private $email;
     private $password;
     private $name;
+    private $beigetreteneTreffen;
+    private $erstellteTreffen;
 
 
     public function __construct($email, $password, $name, $birthdate, $height, $weight, $trainingLocation, $sportstypes, $goals){
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
+        $this->beigetreteneTreffen = array();
+        $this->erstellteTreffen = array();
     }
 
     public function getEmail(){

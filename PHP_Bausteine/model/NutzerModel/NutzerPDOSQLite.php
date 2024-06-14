@@ -3,8 +3,11 @@
 namespace PHP_Bausteine\model\NutzerModel;
 
 
+use PDOException;
 use PHP_Bausteine\model\NutzerModel\Nutzer;
 use PHP_Bausteine\Connection;
+use PHP_Bausteine\InternerFehlerException;
+use PHP_Bausteine\model\TreffenModel\InternerFehlerTreffenDatenbankException;
 
 class NutzerPDOSQLite implements NutzerListeDAO
 {
@@ -129,8 +132,54 @@ class NutzerPDOSQLite implements NutzerListeDAO
                 array_push($entries, $entry);
             }
             return $entries;
-        } catch (PDOException $exc) {
+        } catch (InternerFehlerException $exc) {
             throw new InternerFehlerException();
         }
+    }
+
+    function getBeigetreteneTreffen($NutzerID)
+    {
+        try{
+            $db = $this->connection->getDB();
+            $sql = "SELECT TreffenID FROM TeilnehmerBeiTreffen WHERE NutzerID=:$NutzerID";
+            $command = $db->prepare($sql);
+            if(!$command){
+                throw new InternerFehlerException();
+            }
+            if (!$command->execute()){
+                throw new InternerFehlerException();
+            }
+            $result = $command->fetchAll();
+            $entries = [];
+            foreach($result as $row){
+                $entry = $row["TreffenID"];
+                array_push($entries, $entry);
+            }
+            return $entries;
+        }catch(InternerFehlerException $exc){
+            throw new InternerFehlerException();
+        }
+    }
+
+    function getErstellteTreffen($NutzerID)
+    {
+        try{
+            $db = $this->connection->getDB();
+            $sql = "SELECT TreffenID FROM TreffenListe WHERE ersteller=:$NutzerID";
+            $command = $db->prepare($sql);
+            if(!$command){
+                throw new InternerFehlerException();
+            }
+            if(!$command->execute()){
+                throw new InternerFehlerException();
+            }
+            $result = $command->fetchAll();
+            $entries = [];
+            foreach($result as $row){
+                $entry = new Treffen($row["TreffenID"], $row["ort"], $row["datum"], $row["ersteller"], $row["zeit"], $row["beschreibung"]);
+                array_push($entries, $entry);
+            }
+            return $entries;
+        } catch(InternerFehlerDatenbankException $exc){}
     }
 }

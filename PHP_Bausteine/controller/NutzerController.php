@@ -133,4 +133,20 @@ class NutzerController extends BaseController {
         $this->redirect("index.php");
     }
 
+    public function beigetreteneTreffenNutzer()
+    {
+        $NutzerID = $_SESSION["id"];
+        $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
+        $beigetreteneTreffen = $Nutzer -> getBeigetreteneTreffen($NutzerID);
+        return $beigetreteneTreffen;
+    }
+
+    public function erstellteTreffenNutzer()
+    {
+        $NutzerID = $_SESSION["id"];
+        $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
+        $erstellteTreffen = $Nutzer -> getErstellteTreffen($NutzerID);
+        return $erstellteTreffen;
+    }
+
 }
