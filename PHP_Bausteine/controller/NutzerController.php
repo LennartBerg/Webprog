@@ -4,6 +4,7 @@ namespace PHP_Bausteine\controller;
 use PHP_Bausteine\model\NutzerModel\NutzerListe;
 use PHP_Bausteine\InternerFehlerDatenbankException;
 use PHP_Bausteine\InternerFehlerException;
+use PHP_Bausteine\controller\TreffenController;
 
 class NutzerController extends BaseController {
 
@@ -138,7 +139,17 @@ class NutzerController extends BaseController {
         $NutzerID = $_SESSION["id"];
         $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
         $beigetreteneTreffen = $Nutzer -> getBeigetreteneTreffen($NutzerID);
-        return $beigetreteneTreffen;
+        $TreffenController = new TreffenController();
+        $alleTreffen = $TreffenController -> getAllTreffen();
+        $beigetreteneTreffenInstanzen = array();
+        for ($i = 0; $i < sizeof($beigetreteneTreffen); $i++){
+            for($j = 0; $j < sizeof($alleTreffen); $j++){
+                if($beigetreteneTreffen[$i] == $alleTreffen[$j]){
+                    array_push($beigetreteneTreffenInstanzen, $alleTreffen[$j]);
+                }
+            }
+        }
+        return $beigetreteneTreffenInstanzen;
     }
 
     public function erstellteTreffenNutzer()
@@ -146,7 +157,18 @@ class NutzerController extends BaseController {
         $NutzerID = $_SESSION["id"];
         $Nutzer = NutzerListe::getInstance() -> getNutzer($NutzerID);
         $erstellteTreffen = $Nutzer -> getErstellteTreffen($NutzerID);
-        return $erstellteTreffen;
+        $TreffenController = new TreffenController();
+        $alleTreffen = $TreffenController -> getAllTreffen();
+        $erstellteTreffenInstanzen = array();
+
+        for ($i = 0; $i < sizeof($erstellteTreffen); $i++){
+            for($j = 0; $j < sizeof($alleTreffen); $j++){
+                if($erstellteTreffen[$i] == $alleTreffen[$j]){
+                    array_push($erstellteTreffenInstanzen, $alleTreffen[$j]);
+                }
+            }
+        }
+        return $erstellteTreffenInstanzen;
     }
 
 }
