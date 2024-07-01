@@ -92,7 +92,7 @@ class Connection {
                     NutzerID INTEGER PRIMARY KEY AUTOINCREMENT,
                     email TEXT UNIQUE NOT NULL, /* UNIQUE NOT NULL macht den quatsch zum Primär-Key*/
                     password TEXT NOT NULL,
-                    name TEXT UNiQUE NOT NULL, 
+                    name TEXT UNiQUE NOT NULL
                 );
             ");
         $this->db->exec("
