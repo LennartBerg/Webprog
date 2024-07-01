@@ -35,7 +35,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
     {
         try {
             $db = $this->connection->getDB();
-            $sql = "INSERT INTO NutzerListe (email, password, name, birthdate, height, weight, trainingsLocation, sportstypes, goals) VALUES (:email, :password, :name, :birthdate, :height, :weight, :trainingLocation, :sportstypes, :goals);";
+            $sql = "INSERT INTO NutzerListe (email, password, name) VALUES (:email, :password, :name);";
             $command = $db->prepare($sql);
             if (!$command) {
                 throw new InternerFehlerException();
@@ -52,6 +52,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
     /**
      * TODO: id in TreffenID ändern
      */
+
     public function getNutzer($id)
     {
         try {
@@ -92,7 +93,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
                 throw new FehlenderNutzerException();
             }
             $entry = $result[0];
-            return new Nutzer($entry["NutzerID"], $entry["email"], $entry["name"]);
+            return new Nutzer($entry["email"], $entry["name"], $entry["NutzerID"]);
         } catch (PDOException $exc) {
             throw new InternerFehlerException();
         }
@@ -152,7 +153,7 @@ class NutzerPDOSQLite implements NutzerListeDAO
 
             $entries = [];
             foreach ($result as $row) {
-                $entry = new Nutzer($row["NutzerID"], $row["email"], $row["name"], $row["birthdate"], $row["height"], $row["weight"], $row["trainingsLocation"], $row["sportstypes"], $row["goals"]);
+                $entry = new Nutzer( $row["email"],  $row["name"], $row["NutzerID"]);
                 array_push($entries, $entry);
             }
             return $entries;

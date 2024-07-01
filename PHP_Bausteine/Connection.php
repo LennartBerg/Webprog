@@ -93,12 +93,6 @@ class Connection {
                     email TEXT UNIQUE NOT NULL, /* UNIQUE NOT NULL macht den quatsch zum Primär-Key*/
                     password TEXT NOT NULL,
                     name TEXT UNiQUE NOT NULL, 
-                    birthdate TEXT,
-                    height INTEGER,
-                    weight INTEGER,
-                    trainingsLocation TEXT,
-                    sportstypes TEXT,
-                    goals TEXT
                 );
             ");
         $this->db->exec("
