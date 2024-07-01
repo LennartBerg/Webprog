@@ -14,16 +14,11 @@ class Connection {
 
     function __construct()
     {
-        //try {
             $user = 'root';
             $pw = null;
             $dsn = 'sqlite:./db/Gymder.db';
             $this->db = new PDO($dsn, $user, $pw);
             $this->checkTables();
-            //$this->checkExpiryDateofTreffen();
-        //} catch (PDOException $e) {
-        //    throw new InternerFehlerException();
-        //}
     }
 
     function __destruct()
