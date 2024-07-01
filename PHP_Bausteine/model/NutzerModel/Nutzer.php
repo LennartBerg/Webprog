@@ -11,7 +11,7 @@ class Nutzer{
     private $erstellteTreffen;
 
 
-    public function __construct($email, $password, $name, $birthdate, $height, $weight, $trainingLocation, $sportstypes, $goals){
+    public function __construct($email, $password, $name){
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;

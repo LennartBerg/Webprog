@@ -69,11 +69,35 @@ class NutzerPDOSQLite implements NutzerListeDAO
                 throw new FehlenderNutzerException();
             }
             $entry = $result[0];
-            return new Nutzer($entry["id"], $entry["email"], $entry["name"], $entry["birthdate"], $entry["height"], $entry["weight"], $entry["trainingsLocation"], $entry["sportstypes"], $entry["goals"]);
+            return new Nutzer($entry["id"], $entry["email"], $entry["name"]);
         } catch (PDOException $exc) {
             throw new InternerFehlerException();
         }
     }
+
+    public function getNutzerByEmail($email)
+    {
+        try {
+            $db = $this->connection->getDB();
+            $sql = "SELECT * FROM NutzerListe WHERE email=:email LIMIT 1";
+            $command = $db->prepare($sql);
+            if (!$command) {
+                throw new InternerFehlerException();
+            }
+            if (!$command->execute([":email" => $email])) {
+                throw new InternerFehlerException();
+            }
+            $result = $command->fetchAll();
+            if (empty($result)) {
+                throw new FehlenderNutzerException();
+            }
+            $entry = $result[0];
+            return new Nutzer($entry["NutzerID"], $entry["email"], $entry["name"]);
+        } catch (PDOException $exc) {
+            throw new InternerFehlerException();
+        }
+    }
+
 
     public function loescheNutzer($id)
     {

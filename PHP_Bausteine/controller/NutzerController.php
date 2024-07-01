@@ -109,20 +109,21 @@ class NutzerController extends BaseController {
 
     public function login()
     {
-        $password = $_POST["Login"]["password"];
-        $email = $_POST["Login"]["email"];
-        $allNutzer = NutzerListe::getInstance() -> getAllNutzer();
+        //schon mehr als ineffizient hier so die einloggen funktion zu machen ....
+        $password = $_POST["password"];
+        $email = $_POST["name"];
+        $allNutzer = NutzerListe::getInstance() -> getNutzerByEmail($email);
         foreach ($allNutzer as $nutzer){
             if($nutzer -> getEmail() == $email){
                 $hashedpwd = $nutzer -> getPassword();
                 if(password_verify($hashedpwd, $password)){
-                    if($name = $nutzer -> getName()){
-                        $_SESSION["name"] = $name;
+                    if($name = $nutzer -> getEmail()){
+                        $_SESSION["name"] = $nutzer -> getName();
                         $_SESSION["email"] = $nutzer -> getEmail();
                         $_SESSION["id"] = $nutzer -> getID();
                         $_SESSION["message"] = "login_successful";
                         $_SESSION["isLoggedIn"] = true;
-                        $this->redirect("Profil.php");
+                        header("Location: index.php");
                     }
                 }
             }
